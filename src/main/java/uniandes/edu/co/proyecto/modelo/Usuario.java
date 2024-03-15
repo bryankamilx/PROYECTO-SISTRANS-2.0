@@ -1,0 +1,125 @@
+package uniandes.edu.co.proyecto.modelo;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="usuarios")
+public class Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private String nombre;
+    private String login;
+    private String palabraClave;
+    private String nacionalidad;
+    private String direccion;
+    private String telefono;
+    private String ciudad;
+    private String codigoPostal;
+    private String rol;
+
+    public Usuario(String tipoDocumento, String numeroDocumento,String nombre, String login, String palabraClave, String nacionalidad, String direccion, String telefono, String ciudad, String codigoPostal, String rol) {
+        super();
+        
+        this.nombre = nombre;
+        this.login = login;
+        this.palabraClave = palabraClave;
+        this.nacionalidad = nacionalidad;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.ciudad = ciudad;
+        this.codigoPostal = codigoPostal;
+        this.rol = rol;
+    }
+
+    public Usuario()
+    {;}
+
+    public Integer getId(){
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPalabraClave() {
+        return palabraClave;
+    }
+
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public String getCodigoPostal() {
+        return codigoPostal;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+
+    public void setId(Integer id){
+        this.id =id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPalabraClave(String palabraClave) {
+        this.palabraClave = palabraClave;
+    }
+
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public void setCodigoPostal(String codigoPostal) {
+        this.codigoPostal = codigoPostal;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    
+
+}
