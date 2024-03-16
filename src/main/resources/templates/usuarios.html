@@ -38,7 +38,7 @@
                     <td th:text="${usuario.codigoPostal}"></td>
                     <td th:text="${usuario.rol}"></td>
                     <td>
-                        <a th:href="@{usuarios/{id}edit/(id=${usuario.id})}">
+                        <a th:href="@{usuarios/{id}/edit(id=${usuario.id})}">
                             Editar
                         </a>
                         <a th:href="@{usuarios/{id}/delete(id=${usuario.id})}"
@@ -51,6 +51,7 @@
         </table>
         <div>
             <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
+            <a th:href="@{usuarios/new}" class="btn btn-primary">Añadir Bar</a>
         </div>
     </div>
 </body>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragmento</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div th:fragment="usuarioForm(titulo)" class="container border border-2 w-25">
+        <h1 class="text-center" th:text="${titulo}"></h1>
+        <form>
+            <label class="col-form-label">Nombre</label>
+            <input class="form-control" type="text" id="nombre"
+            name="nombre" required th:value="${usuario.nombre}"/>
+
+            <label class="col-form-label">Login</label>
+            <input class="form-control" type="text" id="login"
+            name="login" required th:value="${usuario.login}"/>
+
+            <label class="col-form-label">Palabra Clave</label>
+            <input class="form-control" type="text" id="palabraClave"
+            name="palabraClave" required th:value="${usuario.palabraClave}"/>
+
+            <label class="col-form-label">Nacionalidad</label>
+            <input class="form-control" type="text" id="nacionalidad"
+            name="nacionalidad" required th:value="${usuario.nacionalidad}"/>
+
+            <label class="col-form-label">Direccion</label>
+            <input class="form-control" type="text" id="direccion"
+            name="direccion" required th:value="${usuario.direccion}"/>
+
+            <label class="col-form-label">Telefono</label>
+            <input class="form-control" type="text" id="telefono"
+            name="telefono" required th:value="${usuario.telefono}"/>
+
+            <label class="col-form-label">Ciudad</label>
+            <input class="form-control" type="text" id="ciudad"
+            name="ciudad" required th:value="${usuario.ciudad}"/>
+
+            <label class="col-form-label">Ciudad</label>
+            <input class="form-control" type="text" id="ciudad"
+            name="ciudad" required th:value="${usuario.ciudad}"/>
+
+            <label class="col-form-label">Codigo Postal</label>
+            <input class="form-control" type="text" id="codigoPostal"
+            name="ciudad" required th:value="${usuario.codigoPostal}"/>
+
+            <label class="col-form-label">Rol</label>
+            <select class="form-control" id="rol"
+            name="rol" required>
+            <option value="cliente" th:selected="${usuario.rol eq 'cliente'}">
+                Cliente
+            </option>
+            <option value="cajero" th:selected="${usuario.rol eq 'cajero'}">
+                Cajero
+            </option>
+            <option value="gerente de oficina" th:selected="${usuario.rol eq 'gerente de oficina'}">
+                Gerente de oficina
+            </option>
+            <option value="gerente general" th:selected="${usuario.rol eq 'gerente general'}">
+                Gerente general
+            </option>
+        </select>
+        <div class="text-center">
+            <input type="submit" value="Guardar" class="btn btn.primary"/>
+            <a th:href="@{/usuarios}" class="btn btn-primary"Cancelar></a>
+        </div>
+        </form>
+    </div>
+</body>
+</html>

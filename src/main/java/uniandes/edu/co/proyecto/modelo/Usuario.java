@@ -14,25 +14,25 @@ public class Usuario {
     private Integer id;
     private String nombre;
     private String login;
-    private String palabraClave;
+    private String palabra_clave;
     private String nacionalidad;
     private String direccion;
     private String telefono;
     private String ciudad;
-    private String codigoPostal;
+    private String codigo_postal;
     private String rol;
 
-    public Usuario(String tipoDocumento, String numeroDocumento,String nombre, String login, String palabraClave, String nacionalidad, String direccion, String telefono, String ciudad, String codigoPostal, String rol) {
+    public Usuario(String tipoDocumento, String numeroDocumento,String nombre, String login, String palabra_clave, String nacionalidad, String direccion, String telefono, String ciudad, String codigo_postal, String rol) {
         super();
         
         this.nombre = nombre;
         this.login = login;
-        this.palabraClave = palabraClave;
+        this.palabra_clave = palabra_clave;
         this.nacionalidad = nacionalidad;
         this.direccion = direccion;
         this.telefono = telefono;
         this.ciudad = ciudad;
-        this.codigoPostal = codigoPostal;
+        this.codigo_postal = codigo_postal;
         this.rol = rol;
     }
 
@@ -52,7 +52,7 @@ public class Usuario {
     }
 
     public String getPalabraClave() {
-        return palabraClave;
+        return palabra_clave;
     }
 
     public String getNacionalidad() {
@@ -72,7 +72,7 @@ public class Usuario {
     }
 
     public String getCodigoPostal() {
-        return codigoPostal;
+        return codigo_postal;
     }
 
     public String getRol() {
@@ -93,7 +93,7 @@ public class Usuario {
     }
 
     public void setPalabraClave(String palabraClave) {
-        this.palabraClave = palabraClave;
+        this.palabra_clave = palabraClave;
     }
 
     public void setNacionalidad(String nacionalidad) {
@@ -112,8 +112,8 @@ public class Usuario {
         this.ciudad = ciudad;
     }
 
-    public void setCodigoPostal(String codigoPostal) {
-        this.codigoPostal = codigoPostal;
+    public void setCodigoPostal(String codigo_postal) {
+        this.codigo_postal = codigo_postal;
     }
 
     public void setRol(String rol) {
