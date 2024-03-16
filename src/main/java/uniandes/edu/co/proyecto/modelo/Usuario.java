@@ -22,7 +22,7 @@ public class Usuario {
     private String codigo_postal;
     private String rol;
 
-    public Usuario(String tipoDocumento, String numeroDocumento,String nombre, String login, String palabra_clave, String nacionalidad, String direccion, String telefono, String ciudad, String codigo_postal, String rol) {
+    public Usuario(String nombre, String login, String palabra_clave, String nacionalidad, String direccion, String telefono, String ciudad, String codigo_postal, String rol) {
         super();
         
         this.nombre = nombre;
@@ -51,7 +51,7 @@ public class Usuario {
         return login;
     }
 
-    public String getPalabraClave() {
+    public String getPalabra_clave() {
         return palabra_clave;
     }
 
@@ -71,7 +71,7 @@ public class Usuario {
         return ciudad;
     }
 
-    public String getCodigoPostal() {
+    public String getCodigo_postal() {
         return codigo_postal;
     }
 
@@ -92,8 +92,8 @@ public class Usuario {
         this.login = login;
     }
 
-    public void setPalabraClave(String palabraClave) {
-        this.palabra_clave = palabraClave;
+    public void setPalabra_clave(String palabra_clave) {
+        this.palabra_clave = palabra_clave;
     }
 
     public void setNacionalidad(String nacionalidad) {
@@ -112,7 +112,7 @@ public class Usuario {
         this.ciudad = ciudad;
     }
 
-    public void setCodigoPostal(String codigo_postal) {
+    public void setCodigo_postal(String codigo_postal) {
         this.codigo_postal = codigo_postal;
     }
 

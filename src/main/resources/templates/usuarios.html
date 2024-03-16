@@ -30,12 +30,12 @@
                     <td th:text="${usuario.id}"></td>
                     <td th:text="${usuario.nombre}"></td>
                     <td th:text="${usuario.login}"></td>
-                    <td th:text="${usuario.palabraClave}"></td>
+                    <td th:text="${usuario.palabra_clave}"></td>
                     <td th:text="${usuario.nacionalidad}"></td>
                     <td th:text="${usuario.direccion}"></td>
                     <td th:text="${usuario.telefono}"></td>
                     <td th:text="${usuario.ciudad}"></td>
-                    <td th:text="${usuario.codigoPostal}"></td>
+                    <td th:text="${usuario.codigo_postal}"></td>
                     <td th:text="${usuario.rol}"></td>
                     <td>
                         <a th:href="@{usuarios/{id}/edit(id=${usuario.id})}">
@@ -51,7 +51,7 @@
         </table>
         <div>
             <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
-            <a th:href="@{usuarios/new}" class="btn btn-primary">Añadir Bar</a>
+            <a th:href="@{usuarios/new}" class="btn btn-primary">Añadir Usuario</a>
         </div>
     </div>
 </body>

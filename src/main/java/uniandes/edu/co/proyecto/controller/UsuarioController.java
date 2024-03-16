@@ -37,7 +37,7 @@ public class UsuarioController {
 
     @PostMapping("/usuarios/new/save")
     public String usuarioGuardar(@ModelAttribute Usuario usuario){
-        usuarioRepository.insertarUsuario(usuario.getNombre(), usuario.getLogin(), usuario.getPalabraClave(), usuario.getNacionalidad(), usuario.getDireccion(), usuario.getTelefono(), usuario.getCiudad(), usuario.getCodigoPostal(), usuario.getRol());
+        usuarioRepository.insertarUsuario(usuario.getNombre(), usuario.getLogin(), usuario.getPalabra_clave(), usuario.getNacionalidad(), usuario.getDireccion(), usuario.getTelefono(), usuario.getCiudad(), usuario.getCodigo_postal(), usuario.getRol());
         return "redirect:/usuarios";
     }
 
@@ -54,7 +54,7 @@ public class UsuarioController {
     
     @PostMapping("/usuarios/{id}/edit/save")
     public String usuarioEditarGuardar(@PathVariable("id") Integer id, @ModelAttribute Usuario usuario){
-        usuarioRepository.actualizarUsuario(id, usuario.getNombre(), usuario.getLogin(), usuario.getPalabraClave(), usuario.getNacionalidad(), usuario.getDireccion(), usuario.getTelefono(), usuario.getCiudad(), usuario.getCodigoPostal(), usuario.getRol());
+        usuarioRepository.actualizarUsuario(id, usuario.getNombre(), usuario.getLogin(), usuario.getPalabra_clave(), usuario.getNacionalidad(), usuario.getDireccion(), usuario.getTelefono(), usuario.getCiudad(), usuario.getCodigo_postal(), usuario.getRol());
         return "redirect:/usuarios";
     }
 
