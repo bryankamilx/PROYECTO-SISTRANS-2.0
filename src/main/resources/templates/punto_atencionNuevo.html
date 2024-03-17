@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Usuario</title>
+</head>
+<body>
+    <form action="#" th:action="@{/puntos_atencion/new/save}" method="post">
+        <div th:replace="~{fragments/punto_atencionForm :: punto_atencionForm(titulo='Crear punto_atencion')}"></div>
+    </form>
+</body>
+</html>

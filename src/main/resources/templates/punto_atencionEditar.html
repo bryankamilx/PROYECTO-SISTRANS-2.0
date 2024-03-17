@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar puntos_atencion</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <form th:action="@{'/puntos_atencion/'+${id}+'/edit/save'}" th:object="${punto_atencion}"
+    method="post">
+    <div th:replace="~{fragments/punto_atencionForm :: punto_atencionForm(titulo='Editar punto_atencion', punto_atencion=${punto_atencion})}">
+    </div>
+</form>
+</body>
+</html>

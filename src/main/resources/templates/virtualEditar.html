@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Punto de Atención Virtual</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <form th:action="@{'/virtuales/'+${id}+'/edit/save'}" th:object="${virtual}"
+    method="post">
+    <div th:replace="~{fragments/virtualForm :: virtualForm(titulo='Editar punto de atención virtual', virtual=${virtual})}">
+    </div>
+</form>
+</body>
+</html>
