@@ -13,14 +13,15 @@
             <label class="col-form-label">Tipo_punto</label>
             <select class="form-control" id="tipo_punto"
             name="tipo_punto" required>
-            <option value="presencial" th:selected="${punto_atencion.tipo_punto eq 'presencial'}">
+            <option value="Presencial" th:selected="${punto_atencion.tipo_punto eq 'Presencial'}">
                 Presencial
             </option>
-            <option value="cajero" th:selected="${punto_atencion.tipo_punto eq 'cajero'}">
+            <option value="Cajero" th:selected="${punto_atencion.tipo_punto eq 'Cajero'}">
                 Cajero
             </option>
-            <option value="virtual" th:selected="${punto_atencion.tipo_punto eq 'virtual'}">
-                Gerente de oficina
+            <option value="Virtual" th:selected="${punto_atencion.tipo_punto eq 'Virtual'}">
+                Virtual
+
             </option>
 
             <label class="col-form-label">Direccion</label>
@@ -35,7 +36,7 @@
         </select>
         <div class="text-center">
             <input type="submit" value="Guardar" class="btn btn.primary"/>
-            <a th:href="@{/puntos_atencion}" class="btn btn-primary"Cancelar></a>
+            <a th:href="@{/puntos_atencion}" class="btn btn-primary">Cancelar</a>
         </div>
         </form>
     </div>
