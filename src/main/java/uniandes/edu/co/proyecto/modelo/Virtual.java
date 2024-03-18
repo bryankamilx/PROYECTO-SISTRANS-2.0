@@ -1,6 +1,5 @@
 package uniandes.edu.co.proyecto.modelo;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,8 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="puntos_atencion")
-public class Punto_atencion {
+@Table(name="virtuales")
+public class Virtual{
+    
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
@@ -17,13 +17,17 @@ public class Punto_atencion {
     private String tipo_punto;
 
     private String direccion;
+    
+    private String plataforma;
 
-    public Punto_atencion(){;}
-
-    public Punto_atencion(String tipo_punto, String direccion)
-    {
-        this.tipo_punto = tipo_punto;
+    public Virtual(String tipo_Punto, String direccion, String plataforma) {
+        
+        this.tipo_punto = tipo_Punto;
         this.direccion = direccion;
+        this.plataforma = plataforma;
+    }
+
+    public Virtual() {
     }
 
     public Integer getId() {
@@ -49,11 +53,14 @@ public class Punto_atencion {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
-    @Override
-    public String toString()
-    {
-        return this.tipo_punto+"|"+this.direccion;
+    
+    public String getPlataforma() {
+        return plataforma;
     }
+
+    public void setPlataforma(String plataforma) {
+        this.plataforma = plataforma;
+    }
+
     
 }

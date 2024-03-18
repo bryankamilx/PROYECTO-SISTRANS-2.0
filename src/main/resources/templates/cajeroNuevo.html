@@ -1,0 +1,12 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cajero</title>
+</head>
+<body>
+    <form action="#" th:action="@{/cajeros/new/save}" method="post">
+        <div th:replace="~{fragments/cajeroForm :: cajeroForm(titulo='Crear cajero')}"></div>
+    </form>
+</body>
+</html>

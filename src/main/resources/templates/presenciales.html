@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presenciales</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div>
+        <h1>Puntos Presenciales</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Tipo_punto</th>
+                    <th>Dirección</th>
+                    <th>Cajeros</th>
+                    <th>Horario_Atencion_Inicio</th>
+                    <th>Horario_Atencion_Fin</th>
+                    <th>Acciones</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="presencial: ${presenciales}">
+                    <td th:text="${presencial.tipo_punto}"></td>
+                    <td th:text="${presencial.direccion}"></td>
+                    <td th:text="${presencial.cajeros_disponibles}"></td>
+                    <td th:text="${presencial.horario_atencion_inicio}"></td>
+                    <td th:text="${presencial.horario_atencion_fin}"></td>
+                    <td>
+                        <a th:href="@{'presenciales/' + ${presencial.id} + '/edit'}">Editar</a>
+                        <a th:href="@{'presenciales/' + ${presencial.id} + '/delete'}" onclick="return confirm('¿Estás seguro de eliminar este punto presencial?')">Borrar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
+            <a th:href="@{presenciales/new}" class="btn btn-primary">Añadir Punto Presencial</a>
+        </div>
+    </div>
+</body>
+</html>
