@@ -15,6 +15,7 @@ import uniandes.edu.co.proyecto.repositorio.UsuarioRepository;
 
 @Controller
 public class UsuarioController {
+    
     @Autowired
     private UsuarioRepository usuarioRepository;
 
