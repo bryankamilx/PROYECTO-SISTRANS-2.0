@@ -21,6 +21,11 @@
             <label for="numerooficina" class="col-form-label">Numero Oficina:</label>
             <input class="form-control" type="number" id="numerooficina" name="numerooficina" required th:value="${cajero.numerooficina}"><br>
         </div>
+
+        <div class="text-center">
+            <input type="submit" value="Guardar" class="btn btn-primary">
+            <a th:href="@{/cajeros}" class="btn btn-primary">Cancelar</a>
+        </div>
     </div>
 </body>
 </html>
