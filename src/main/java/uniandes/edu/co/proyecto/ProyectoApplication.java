@@ -21,11 +21,11 @@ import uniandes.edu.co.proyecto.repositorio.OperacionRepository;
 @SpringBootApplication
 public class ProyectoApplication{
 
-	@Autowired
+    @Autowired
 
-	public static void main(String[] args) {
-		SpringApplication.run(ProyectoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ProyectoApplication.class, args);
+    }
 
 
 }
