@@ -27,7 +27,7 @@ public interface PresencialRepository extends JpaRepository<Presencial, Integer>
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO puntos_atencion (id, tipo_punto, direccion) VALUES ( puntos_atencion_seq.nestval , 'Presencial', '')", nativeQuery = true)
+    @Query(value = "INSERT INTO puntos_atencion (id, tipo_punto, direccion) VALUES ( puntos_atencion_seq.nextval , 'Presencial', 'Direccion')", nativeQuery = true)
     void insertarPunto_atencion();
 
     @Modifying

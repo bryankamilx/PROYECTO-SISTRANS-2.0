@@ -27,7 +27,7 @@ public interface CajeroRepository extends JpaRepository<Cajero, Integer>{
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO puntos_atencion (id, tipo_punto, direccion) VALUES ( puntos_atencion_seq.nextval , 'Cajero', '')", nativeQuery = true)
+    @Query(value = "INSERT INTO puntos_atencion (id, tipo_punto, direccion) VALUES ( puntos_atencion_seq.nextval , 'Cajero', 'Direccion')", nativeQuery = true)
     void insertarPunto_atencion();
 
 
