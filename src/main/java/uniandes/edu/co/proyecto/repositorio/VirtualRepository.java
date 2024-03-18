@@ -20,12 +20,12 @@ public interface VirtualRepository extends JpaRepository<Virtual, Integer>{
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO virtuales (id, plataforma) VALUES ( puntos_atencion_seq.nextval , :plataforma)", nativeQuery = true)
+    @Query(value = "INSERT INTO virtuales (id, plataforma) VALUES ( puntos_atencion_seq.currval , :plataforma)", nativeQuery = true)
     void insertarVirtual( @Param("plataforma") String plataforma);
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO puntos_atencion (id, tipo_punto, direccion) VALUES ( puntos_atencion_seq.currval , 'Virtual', '')", nativeQuery = true)
+    @Query(value = "INSERT INTO puntos_atencion (id, tipo_punto, direccion) VALUES ( puntos_atencion_seq.nextval , 'Virtual', '')", nativeQuery = true)
     void insertarPunto_atencion();
 
     @Modifying

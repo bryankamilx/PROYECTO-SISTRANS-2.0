@@ -21,13 +21,13 @@ public interface CajeroRepository extends JpaRepository<Cajero, Integer>{
     // Agregar cajero
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO cajeros (id, monto_disponible, limite_retiro, numerooficina) VALUES ( puntos_atencion_seq.nextval , :monto_disponible, :limite_retiro, :numerooficina)", nativeQuery = true)
+    @Query(value = "INSERT INTO cajeros (id, monto_disponible, limite_retiro, numerooficina) VALUES ( puntos_atencion_seq.currval , :monto_disponible, :limite_retiro, :numerooficina)", nativeQuery = true)
     void insertarCajero( @Param("monto_disponible") Integer monto_disponible, @Param("limite_retiro") Integer limite_retiro, @Param("numerooficina") Integer numerooficina);
 
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO puntos_atencion (id, tipo_punto, direccion) VALUES ( puntos_atencion_seq.currval , 'Cajero', '')", nativeQuery = true)
+    @Query(value = "INSERT INTO puntos_atencion (id, tipo_punto, direccion) VALUES ( puntos_atencion_seq.nextval , 'Cajero', '')", nativeQuery = true)
     void insertarPunto_atencion();
 
 
@@ -44,7 +44,7 @@ public interface CajeroRepository extends JpaRepository<Cajero, Integer>{
     @Query(value = "DELETE FROM cajeros WHERE id = :id", nativeQuery = true)
     void eliminarCajero(@Param("id") Integer id);
 
-    @Modifying(clearAutomatically = true)
+    @Modifying
     @Transactional
     @Query(value = "DELETE FROM puntos_atencion WHERE id = :id", nativeQuery = true)
     void eliminarPunto_atencion(@Param("id") Integer id);

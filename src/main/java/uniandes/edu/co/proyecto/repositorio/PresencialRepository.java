@@ -22,12 +22,12 @@ public interface PresencialRepository extends JpaRepository<Presencial, Integer>
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO presenciales (id, cajeros_disponibles, horario_atencion_inicio, horario_atencion_fin, numerooficina) VALUES ( puntos_atencion_seq.nextval , :cajeros_disponibles, :horario_atencion_inicio, :horario_atencion_fin, :numerooficina)", nativeQuery = true)
+    @Query(value = "INSERT INTO presenciales (id, cajeros_disponibles, horario_atencion_inicio, horario_atencion_fin, numerooficina) VALUES ( puntos_atencion_seq.currval , :cajeros_disponibles, :horario_atencion_inicio, :horario_atencion_fin, :numerooficina)", nativeQuery = true)
     void insertarPresencial(@Param("cajeros_disponibles") Integer cajeros_disponibles, @Param("horario_atencion_inicio") Timestamp horario_atencion_inicio, @Param("horario_atencion_fin") Timestamp horario_atencion_fin, @Param("numerooficina") Integer numerooficina);
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO puntos_atencion (id, tipo_punto, direccion) VALUES ( puntos_atencion_seq.currval , 'Presencial', '')", nativeQuery = true)
+    @Query(value = "INSERT INTO puntos_atencion (id, tipo_punto, direccion) VALUES ( puntos_atencion_seq.nestval , 'Presencial', '')", nativeQuery = true)
     void insertarPunto_atencion();
 
     @Modifying

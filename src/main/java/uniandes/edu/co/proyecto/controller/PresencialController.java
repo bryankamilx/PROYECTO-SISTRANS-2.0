@@ -45,8 +45,9 @@ public class PresencialController {
         Timestamp fin = Timestamp.valueOf(Horario_atencion_fin.atDate(LocalDate.now()).atZone(ZoneId.systemDefault()).toLocalDateTime());
 
 
-        presencialRepository.insertarPresencial( presencial.getCajeros_disponibles(), inicio, fin, presencial.getNumerooficina());
+        
         presencialRepository.insertarPunto_atencion();
+        presencialRepository.insertarPresencial( presencial.getCajeros_disponibles(), inicio, fin, presencial.getNumerooficina());
         return "redirect:/presenciales";
     }
 
@@ -76,8 +77,8 @@ public class PresencialController {
 
     @GetMapping("/presenciales/{id}/delete")
     public String presencialEliminar(@PathVariable("id") Integer id){
-        presencialRepository.eliminarPresencial(id);
         presencialRepository.eliminarPunto_atencion(id);
+        presencialRepository.eliminarPresencial(id);
         return "redirect:/presenciales";
     }
     

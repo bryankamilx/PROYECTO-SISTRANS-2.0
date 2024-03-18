@@ -1,11 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
-
-
-import java.sql.Timestamp;
 import java.time.LocalTime;
-
-import org.springframework.cglib.core.Local;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
