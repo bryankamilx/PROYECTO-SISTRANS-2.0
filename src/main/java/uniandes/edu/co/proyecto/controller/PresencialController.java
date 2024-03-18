@@ -32,7 +32,7 @@ public class PresencialController {
 
     @PostMapping("/presenciales/new/save")
     public String presencialGuardar(@ModelAttribute Presencial presencial) {
-        presencialRepository.insertarPresencial( presencial.getTipo_punto(), presencial.getDireccion(), presencial.getCajeros_disponibles(), presencial.getHorario_atencion_inicio(), presencial.getHorario_atencion_fin());
+        presencialRepository.insertarPresencial( presencial.getCajeros_disponibles(), presencial.getHorario_atencion_inicio(), presencial.getHorario_atencion_fin(), presencial.getNumerooficina());
         
         return "redirect:/presenciales";
     }
@@ -50,7 +50,7 @@ public class PresencialController {
 
     @PostMapping("/presenciales/{id}/edit/save")
     public String presencialEditarGuardar(@PathVariable("id") Integer id, @ModelAttribute Presencial presencial){
-        presencialRepository.actualizarPresencial(id, presencial.getTipo_punto(), presencial.getDireccion(), presencial.getCajeros_disponibles(), presencial.getHorario_atencion_inicio(), presencial.getHorario_atencion_fin());
+        presencialRepository.actualizarPresencial(id, presencial.getCajeros_disponibles(), presencial.getHorario_atencion_inicio(), presencial.getHorario_atencion_fin(), presencial.getNumerooficina());
         return "redirect:/presenciales";
     }
 

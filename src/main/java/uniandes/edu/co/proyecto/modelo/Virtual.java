@@ -13,17 +13,12 @@ public class Virtual{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-
-    private String tipo_punto;
-
-    private String direccion;
     
     private String plataforma;
 
-    public Virtual(String tipo_Punto, String direccion, String plataforma) {
+    public Virtual( String plataforma) {
         
-        this.tipo_punto = tipo_Punto;
-        this.direccion = direccion;
+        
         this.plataforma = plataforma;
     }
 
@@ -38,21 +33,6 @@ public class Virtual{
         this.id = id;
     }
 
-    public String getTipo_punto() {
-        return tipo_punto;
-    }
-
-    public void setTipo_punto(String tipo_punto) {
-        this.tipo_punto = tipo_punto;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
     
     public String getPlataforma() {
         return plataforma;

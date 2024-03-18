@@ -36,6 +36,14 @@ public class Punto_atencionController {
     @PostMapping("/puntos_atencion/new/save")
     public String punto_atencionGuardar(@ModelAttribute Punto_atencion puntoAtencion) {
         punto_atencionRepository.insertarPunto_atencion(puntoAtencion.getTipo_punto(), puntoAtencion.getDireccion());
+
+        if (puntoAtencion.getTipo_punto().equals("Cajero")) {
+            punto_atencionRepository.insertarCajero(puntoAtencion.getTipo_punto(), puntoAtencion.getDireccion());
+        } else if (puntoAtencion.getTipo_punto().equals("Presencial")) {
+            punto_atencionRepository.insertarPresencial(puntoAtencion.getTipo_punto(), puntoAtencion.getDireccion());
+        } else if (puntoAtencion.getTipo_punto().equals("Virtual")) {
+            punto_atencionRepository.insertarVirtual(puntoAtencion.getTipo_punto(), puntoAtencion.getDireccion());
+        }	
         
         return "redirect:/puntos_atencion";
     }
@@ -53,13 +61,28 @@ public class Punto_atencionController {
 
     @PostMapping("/puntos_atencion/{id}/edit/save")
     public String punto_atencionEditarGuardar(@PathVariable("id") Integer id, @ModelAttribute Punto_atencion punto_atencion){
-        punto_atencionRepository.actualizarPunto_atencion(id, punto_atencion.getTipo_punto(), punto_atencion.getDireccion());
+        punto_atencionRepository.actualizarPunto_atencion(id, punto_atencion.getDireccion());
+        Punto_atencion puntoExistente = punto_atencionRepository.darPuntos_atencion(id);
+       
+            
+        if(puntoExistente.getTipo_punto().equals("Cajero")){
+            punto_atencionRepository.actualizarCajero(id, puntoExistente.getDireccion());
+        } else if(puntoExistente.getTipo_punto().equals("Presencial")){
+            punto_atencionRepository.actualizarPresencial(id, puntoExistente.getDireccion());
+        } else if(puntoExistente.getTipo_punto().equals("Virtual")){
+            punto_atencionRepository.actualizarVirtual(id, puntoExistente.getDireccion());
+        }
+        
+        
         return "redirect:/puntos_atencion";
     }
 
     @GetMapping("/puntos_atencion/{id}/delete")
     public String punto_atencionEliminar(@PathVariable("id") Integer id){
         punto_atencionRepository.eliminarPunto_atencion(id);
+        punto_atencionRepository.eliminarCajero(id);
+        punto_atencionRepository.eliminarPresencial(id);
+        punto_atencionRepository.eliminarVirtual(id);
         return "redirect:/puntos_atencion";
     }
     

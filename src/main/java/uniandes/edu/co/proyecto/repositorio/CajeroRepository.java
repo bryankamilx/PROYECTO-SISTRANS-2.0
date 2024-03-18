@@ -21,13 +21,13 @@ public interface CajeroRepository extends JpaRepository<Cajero, Integer>{
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO cajeros (id, tipo_Punto, direcccion, monto_disponible, limite_retiro) VALUES ( puntos_atencion_seq.nextval , :tipo_Punto, :direccion, :monto_disponible, :limite_retiro)", nativeQuery = true)
-    void insertarCajero(@Param("tipo_Punto") String tipo_Punto, @Param("direccion") String direcion, @Param("monto_disponible") Integer monto_disponible, @Param("limite_retiro") Integer limite_retiro);
+    @Query(value = "INSERT INTO cajeros (id, monto_disponible, limite_retiro, numerooficina) VALUES ( puntos_atencion_seq.nextval , :monto_disponible, :limite_retiro, :numerooficina)", nativeQuery = true)
+    void insertarCajero( @Param("monto_disponible") Integer monto_disponible, @Param("limite_retiro") Integer limite_retiro, @Param("numerooficina") Integer numerooficina);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE cajeros SET tipo_Punto = :tipo_Punto, direccion = :direccion, monto_disponible = :monto_disponible , limite_retiro = :limite_retiro WHERE id = :id", nativeQuery = true)
-    void actualizarCajero(@Param("id") Integer id, @Param("tipo_Punto") String tipo_Punto, @Param("direccion") String direccion, @Param("monto_disponible") Integer monto_disponible, @Param("limite_retiro") Integer limite_retiro);
+    @Query(value = "UPDATE cajeros SET monto_disponible = :monto_disponible , limite_retiro = :limite_retiro , numerooficina = :numerooficina WHERE id = :id", nativeQuery = true)
+    void actualizarCajero(@Param("id") Integer id, @Param("monto_disponible") Integer monto_disponible, @Param("limite_retiro") Integer limite_retiro, @Param("numerooficina") Integer numerooficina);
 
     @Modifying
     @Transactional

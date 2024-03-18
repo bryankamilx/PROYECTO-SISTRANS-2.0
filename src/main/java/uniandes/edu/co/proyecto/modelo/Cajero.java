@@ -13,21 +13,18 @@ public class Cajero {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-
-    private String tipo_punto;
-
-    private String direccion;
     
     private Integer monto_disponible;
 
     private Integer limite_retiro;
 
-    public Cajero(String tipo_punto, String direccion, Integer monto_disponible, Integer limite_retiro) {
+    private Integer numerooficina;
+
+    public Cajero( Integer monto_disponible, Integer limite_retiro, Integer numerooficina) {
         
-        this.tipo_punto = tipo_punto;
-        this.direccion = direccion;
         this.monto_disponible = monto_disponible;
         this.limite_retiro = limite_retiro;
+        this.numerooficina = numerooficina;
     }
 
     public Cajero() {
@@ -39,22 +36,6 @@ public class Cajero {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTipo_punto() {
-        return tipo_punto;
-    }
-
-    public void setTipo_punto(String tipo_punto) {
-        this.tipo_punto = tipo_punto;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
     
     public Integer getMonto_disponible() {
@@ -72,10 +53,18 @@ public class Cajero {
     public void setLimite_retiro(Integer limite_retiro) {
         this.limite_retiro = limite_retiro;
     }
+
+    public Integer getNumerooficina() {
+        return numerooficina;
+    }
+
+    public void setNumerooficina(Integer numerooficina) {
+        this.numerooficina = numerooficina;
+    }
     
     @Override
     public String toString() {
-        return "Cajero [id=" + id + ", tipo_cajero=" + tipo_punto + ", direccion=" + direccion + ", monto_disponible=" + monto_disponible + ", limite_retiro=" + limite_retiro+ "]";
+        return "Cajero [id=" + id + ", monto_disponible=" + monto_disponible + ", limite_retiro=" + limite_retiro+ ", numero_oficina=" + numerooficina +"]";
     }
     
 }

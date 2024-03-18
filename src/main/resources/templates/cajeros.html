@@ -12,20 +12,18 @@
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>Tipo_punto</th>
-                    <th>Dirección</th>
                     <th>Monto Disponible</th>
                     <th>Limite de Retiro</th>
+                    <th>Numero Oficina</th>
                     <th>Acciones</th>
                     
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="cajero: ${cajeros}">
-                    <td th:text="${cajero.tipo_punto}"></td>
-                    <td th:text="${cajero.direccion}"></td>
                     <td th:text="${cajero.monto_disponible}"></td>
                     <td th:text="${cajero.limite_retiro}"></td>
+                    <td th:text="${cajero.numerooficina}"></td>
                     <td>
                         <a th:href="@{'cajeros/' + ${cajero.id} + '/edit'}">Editar</a>
                         <a th:href="@{'cajeros/' + ${cajero.id} + '/delete'}" onclick="return confirm('¿Estás seguro de eliminar este cajero?')">Borrar</a>

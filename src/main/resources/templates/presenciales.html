@@ -12,22 +12,22 @@
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>Tipo_punto</th>
-                    <th>Dirección</th>
+                    <th>ID</th>
                     <th>Cajeros</th>
                     <th>Horario_Atencion_Inicio</th>
                     <th>Horario_Atencion_Fin</th>
+                    <th>Numero Oficina</th>
                     <th>Acciones</th>
                     
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="presencial: ${presenciales}">
-                    <td th:text="${presencial.tipo_punto}"></td>
-                    <td th:text="${presencial.direccion}"></td>
+                    <td th:text="${presencial.id}"></td>
                     <td th:text="${presencial.cajeros_disponibles}"></td>
                     <td th:text="${presencial.horario_atencion_inicio}"></td>
                     <td th:text="${presencial.horario_atencion_fin}"></td>
+                    <td th:text="${presencial.numerooficina}"></td>
                     <td>
                         <a th:href="@{'presenciales/' + ${presencial.id} + '/edit'}">Editar</a>
                         <a th:href="@{'presenciales/' + ${presencial.id} + '/delete'}" onclick="return confirm('¿Estás seguro de eliminar este punto presencial?')">Borrar</a>

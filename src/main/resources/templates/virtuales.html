@@ -12,16 +12,14 @@
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>Tipo_punto</th>
-                    <th>Dirección</th>
+                    <th>ID</th>
                     <th>Plataforma</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="virtual: ${virtuales}">
-                    <td th:text="${virtual.tipo_punto}"></td>
-                    <td th:text="${virtual.direccion}"></td>
+                    <td th:text="${virtual.id}"></td>
                     <td th:text="${virtual.plataforma}"></td>
                     <td>
                         <a th:href="@{'virtuales/' + ${virtual.id} + '/edit'}">Editar</a>

@@ -32,7 +32,7 @@ public class VirtualController {
 
     @PostMapping("/virtuales/new/save")
     public String virtualGuardar(@ModelAttribute Virtual virtual) {
-        virtualRepository.insertarVirtual( virtual.getTipo_punto(), virtual.getDireccion(), virtual.getPlataforma());
+        virtualRepository.insertarVirtual( virtual.getPlataforma());
         
         return "redirect:/virtuales";
     }
@@ -50,7 +50,7 @@ public class VirtualController {
 
     @PostMapping("/virtuales/{id}/edit/save")
     public String virtualEditarGuardar(@PathVariable("id") Integer id, @ModelAttribute Virtual virtual){
-        virtualRepository.actualizarVirtual(id, virtual.getTipo_punto(), virtual.getDireccion(), virtual.getPlataforma());
+        virtualRepository.actualizarVirtual(id, virtual.getPlataforma());
         return "redirect:/virtuales";
     }
 

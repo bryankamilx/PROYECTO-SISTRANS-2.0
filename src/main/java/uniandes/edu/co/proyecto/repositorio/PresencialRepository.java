@@ -22,13 +22,13 @@ public interface PresencialRepository extends JpaRepository<Presencial, Integer>
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO presenciales (id, tipo_Punto, direcccion, cajeros_disponibles, horario_atencion_inicio, horario_atencion_fin) VALUES ( puntos_atencion_seq.nextval , :tipo_Punto, :direccion, :cajeros_disponibles, :horario_atencion_inicio, :horario_atencion_fin)", nativeQuery = true)
-    void insertarPresencial(@Param("tipo_Punto") String tipo_Punto, @Param("direccion") String direcion, @Param("cajeros_disponibles") Integer cajeros_disponibles, @Param("horario_atencion_inicio") Timestamp horario_atencion_inicio, @Param("horario_atencion_fin") Timestamp horario_atencion_fin);
+    @Query(value = "INSERT INTO presenciales (id, cajeros_disponibles, horario_atencion_inicio, horario_atencion_fin, numerooficina) VALUES ( puntos_atencion_seq.nextval , :cajeros_disponibles, :horario_atencion_inicio, :horario_atencion_fin, :numerooficina)", nativeQuery = true)
+    void insertarPresencial(@Param("cajeros_disponibles") Integer cajeros_disponibles, @Param("horario_atencion_inicio") Timestamp horario_atencion_inicio, @Param("horario_atencion_fin") Timestamp horario_atencion_fin, @Param("numerooficina") Integer numerooficina);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE presenciales SET tipo_Punto = :tipo_Punto, direccion = :direccion, cajeros_disponibles = :cajeros_disponibles , horario_atencion_inicio = :horario_atencion_inicio , horario_atencion_fin = :horario_atencion_fin WHERE id = :id", nativeQuery = true)
-    void actualizarPresencial(@Param("id") Integer id, @Param("tipo_Punto") String tipo_Punto, @Param("direccion") String direccion, @Param("cajeros_disponibles") Integer cajeros_disponibles, @Param("horario_atencion_inicio") Timestamp horario_atencion_inicio, @Param("horario_atencion_fin") Timestamp horario_atencion_fin);
+    @Query(value = "UPDATE presenciales SET cajeros_disponibles = :cajeros_disponibles , horario_atencion_inicio = :horario_atencion_inicio , horario_atencion_fin = :horario_atencion_fin, numerooficina = :numerooficina WHERE id = :id", nativeQuery = true)
+    void actualizarPresencial(@Param("id") Integer id, @Param("cajeros_disponibles") Integer cajeros_disponibles, @Param("horario_atencion_inicio") Timestamp horario_atencion_inicio, @Param("horario_atencion_fin") Timestamp horario_atencion_fin, @Param("numerooficina") Integer numerooficina);
 
     @Modifying
     @Transactional

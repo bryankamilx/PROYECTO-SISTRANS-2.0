@@ -17,10 +17,6 @@ public class Presencial{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-
-    private String tipo_punto;
-
-    private String direccion;
     
     private Integer cajeros_disponibles;
 
@@ -28,14 +24,15 @@ public class Presencial{
 
     private Timestamp horario_atencion_fin;
 
+    private Integer numerooficina;
 
-    public Presencial(String tipo_Punto, String direccion, Integer cajeros_disponibles, Timestamp horario_atencion_inicio, Timestamp horario_atencion_fin) {
+
+    public Presencial(Integer cajeros_disponibles, Timestamp horario_atencion_inicio, Timestamp horario_atencion_fin, Integer numerooficina) {
         
-        this.tipo_punto = tipo_Punto;
-        this.direccion = direccion;
         this.cajeros_disponibles = cajeros_disponibles;
         this.horario_atencion_inicio = horario_atencion_inicio;
         this.horario_atencion_fin = horario_atencion_fin;
+        this.numerooficina = numerooficina;
     }
 
     public Presencial() {
@@ -49,21 +46,6 @@ public class Presencial{
         this.id = id;
     }
 
-    public String getTipo_punto() {
-        return tipo_punto;
-    }
-
-    public void setTipo_punto(String tipo_punto) {
-        this.tipo_punto = tipo_punto;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
     
     public Integer getCajeros_disponibles() {
         return cajeros_disponibles;
@@ -87,6 +69,14 @@ public class Presencial{
 
     public void setHorario_atencion_fin(Timestamp horario_atencion_fin) {
         this.horario_atencion_fin = horario_atencion_fin;
+    }
+
+    public Integer getNumerooficina() {
+        return numerooficina;
+    }
+
+    public void setNumerooficina(Integer numerooficina) {
+        this.numerooficina = numerooficina;
     }
     
 

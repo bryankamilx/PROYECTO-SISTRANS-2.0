@@ -32,7 +32,7 @@ public class CajeroController {
 
     @PostMapping("/cajeros/new/save")
     public String cajeroGuardar(@ModelAttribute Cajero cajero) {
-        cajeroRepository.insertarCajero( cajero.getTipo_punto(), cajero.getDireccion(), cajero.getMonto_disponible(), cajero.getLimite_retiro());
+        cajeroRepository.insertarCajero(  cajero.getMonto_disponible(), cajero.getLimite_retiro(), cajero.getNumerooficina());
         
         return "redirect:/cajeros";
     }
@@ -50,7 +50,7 @@ public class CajeroController {
 
     @PostMapping("/cajeros/{id}/edit/save")
     public String cajeroEditarGuardar(@PathVariable("id") Integer id, @ModelAttribute Cajero cajero){
-        cajeroRepository.actualizarCajero(id, cajero.getTipo_punto(), cajero.getDireccion(), cajero.getMonto_disponible(), cajero.getLimite_retiro());
+        cajeroRepository.actualizarCajero(id, cajero.getMonto_disponible(), cajero.getLimite_retiro(), cajero.getNumerooficina());
         return "redirect:/cajeros";
     }
 
