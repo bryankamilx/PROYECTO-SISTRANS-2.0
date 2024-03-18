@@ -23,7 +23,7 @@ public class OperacionController {
     @GetMapping("/operaciones")
     public String operaciones(Model model) {
         model.addAttribute("operaciones", operacionRepository.darOperaciones());
-        return "bares";
+        return "operaciones";
     }
 
     @GetMapping("/operaciones/new")
