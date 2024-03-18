@@ -33,7 +33,7 @@ public class VirtualController {
     @PostMapping("/virtuales/new/save")
     public String virtualGuardar(@ModelAttribute Virtual virtual) {
         virtualRepository.insertarVirtual( virtual.getPlataforma());
-        
+        virtualRepository.insertarPunto_atencion();
         return "redirect:/virtuales";
     }
 
@@ -57,6 +57,7 @@ public class VirtualController {
     @GetMapping("/virtuales/{id}/delete")
     public String virtualEliminar(@PathVariable("id") Integer id){
         virtualRepository.eliminarVirtual(id);
+        virtualRepository.eliminarPunto_atencion(id);
         return "redirect:/virtuales";
     }
     

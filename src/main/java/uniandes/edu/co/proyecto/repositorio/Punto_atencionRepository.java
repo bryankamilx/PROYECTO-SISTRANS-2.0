@@ -30,18 +30,18 @@ public interface Punto_atencionRepository extends JpaRepository<Punto_atencion, 
 
         @Modifying
         @Transactional
-        @Query(value = "INSERT INTO cajeros (id, tipo_punto, direccion, monto_disponible, limite_retiro) VALUES (puntos_atencion_seq.currval, :tipo_punto, :direccion, 0, 100)", nativeQuery = true)
-        void insertarCajero(@Param("tipo_punto") String tipo_punto, @Param("direccion") String direccion);
+        @Query(value = "INSERT INTO cajeros (id, monto_disponible, limite_retiro, numerooficina) VALUES (puntos_atencion_seq.currval, 0, 100, 1)", nativeQuery = true)
+        void insertarCajero();
     
         @Modifying
         @Transactional
-        @Query(value = "INSERT INTO presenciales (id, tipo_punto, direccion, cajeros_disponibles, horario_atencion_inicio, horario_atencion_fin) VALUES (puntos_atencion_seq.currval, :tipo_punto, :direccion, 0, NULL, NULL)", nativeQuery = true)
-        void insertarPresencial(@Param("tipo_punto") String tipo_punto, @Param("direccion") String direccion);
+        @Query(value = "INSERT INTO presenciales (id, cajeros_disponibles, horario_atencion_inicio, horario_atencion_fin, numerooficina) VALUES (puntos_atencion_seq.currval, 0, NULL, NULL, 1)", nativeQuery = true)
+        void insertarPresencial();
     
         @Modifying
         @Transactional
-        @Query(value = "INSERT INTO virtuales (id, tipo_punto, direccion, plataforma) VALUES (puntos_atencion_seq.currval, :tipo_punto, :direccion, '')", nativeQuery = true)
-        void insertarVirtual(@Param("tipo_punto") String tipo_punto, @Param("direccion") String direccion);
+        @Query(value = "INSERT INTO virtuales (id, plataforma) VALUES (puntos_atencion_seq.currval, 'Web')", nativeQuery = true)
+        void insertarVirtual();
 
 
 
@@ -50,22 +50,6 @@ public interface Punto_atencionRepository extends JpaRepository<Punto_atencion, 
         @Transactional
         @Query(value = "UPDATE puntos_atencion SET direccion = :direccion WHERE id = :id", nativeQuery = true)
         void actualizarPunto_atencion(@Param("id") long id, @Param("direccion") String direccion);
-
-        @Modifying
-        @Transactional
-        @Query(value = "UPDATE cajeros SET direccion = :direccion WHERE id = :id", nativeQuery = true)
-        void actualizarCajero(@Param("id") long id, @Param("direccion") String direccion);
-
-        @Modifying
-        @Transactional
-        @Query(value = "UPDATE presenciales SET direccion = :direccion WHERE id = :id", nativeQuery = true)
-        void actualizarPresencial(@Param("id") long id, @Param("direccion") String direccion);
-
-        @Modifying
-        @Transactional
-        @Query(value = "UPDATE virtuales SET direccion = :direccion WHERE id = :id", nativeQuery = true)
-        void actualizarVirtual(@Param("id") long id, @Param("direccion") String direccion);
-
 
         //Eliminar puntos atencion
 

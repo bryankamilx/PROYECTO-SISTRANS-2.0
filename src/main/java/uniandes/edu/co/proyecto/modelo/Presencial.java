@@ -3,6 +3,9 @@ package uniandes.edu.co.proyecto.modelo;
 
 
 import java.sql.Timestamp;
+import java.time.LocalTime;
+
+import org.springframework.cglib.core.Local;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,14 +23,14 @@ public class Presencial{
     
     private Integer cajeros_disponibles;
 
-    private Timestamp horario_atencion_inicio;
+    private LocalTime horario_atencion_inicio;
 
-    private Timestamp horario_atencion_fin;
+    private LocalTime horario_atencion_fin;
 
     private Integer numerooficina;
 
 
-    public Presencial(Integer cajeros_disponibles, Timestamp horario_atencion_inicio, Timestamp horario_atencion_fin, Integer numerooficina) {
+    public Presencial(Integer cajeros_disponibles, LocalTime horario_atencion_inicio, LocalTime horario_atencion_fin, Integer numerooficina) {
         
         this.cajeros_disponibles = cajeros_disponibles;
         this.horario_atencion_inicio = horario_atencion_inicio;
@@ -55,19 +58,19 @@ public class Presencial{
         this.cajeros_disponibles = cajeros_disponibles;
     }
 
-    public Timestamp getHorario_atencion_inicio() {
+    public LocalTime getHorario_atencion_inicio() {
         return horario_atencion_inicio;
     }
 
-    public void setHorario_atencion_inicio(Timestamp horario_atencion_inicio) {
+    public void setHorario_atencion_inicio(LocalTime horario_atencion_inicio) {
         this.horario_atencion_inicio = horario_atencion_inicio;
     }
 
-    public Timestamp getHorario_atencion_fin() {
+    public LocalTime getHorario_atencion_fin() {
         return horario_atencion_fin;
     }
 
-    public void setHorario_atencion_fin(Timestamp horario_atencion_fin) {
+    public void setHorario_atencion_fin(LocalTime horario_atencion_fin) {
         this.horario_atencion_fin = horario_atencion_fin;
     }
 

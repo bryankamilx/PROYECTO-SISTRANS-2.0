@@ -38,11 +38,11 @@ public class Punto_atencionController {
         punto_atencionRepository.insertarPunto_atencion(puntoAtencion.getTipo_punto(), puntoAtencion.getDireccion());
 
         if (puntoAtencion.getTipo_punto().equals("Cajero")) {
-            punto_atencionRepository.insertarCajero(puntoAtencion.getTipo_punto(), puntoAtencion.getDireccion());
+            punto_atencionRepository.insertarCajero();
         } else if (puntoAtencion.getTipo_punto().equals("Presencial")) {
-            punto_atencionRepository.insertarPresencial(puntoAtencion.getTipo_punto(), puntoAtencion.getDireccion());
+            punto_atencionRepository.insertarPresencial();
         } else if (puntoAtencion.getTipo_punto().equals("Virtual")) {
-            punto_atencionRepository.insertarVirtual(puntoAtencion.getTipo_punto(), puntoAtencion.getDireccion());
+            punto_atencionRepository.insertarVirtual();
         }	
         
         return "redirect:/puntos_atencion";
@@ -51,29 +51,17 @@ public class Punto_atencionController {
     @GetMapping("/puntos_atencion/{id}/edit")
     public String punto_atencionEditarForm(@PathVariable("id") Integer id, Model model) {
         Punto_atencion punto_atencion = punto_atencionRepository.darPuntos_atencion(id);
-        if(punto_atencion != null){
+      if(punto_atencion != null){
             model.addAttribute("punto_atencion", punto_atencion);
             return "punto_atencionEditar";
-        } else {
-            return "redirect:/puntos_atencion";
-        }
+    } else{
+        return "redirect:/puntos_atencion";
     }
-
+    }
+    
     @PostMapping("/puntos_atencion/{id}/edit/save")
     public String punto_atencionEditarGuardar(@PathVariable("id") Integer id, @ModelAttribute Punto_atencion punto_atencion){
         punto_atencionRepository.actualizarPunto_atencion(id, punto_atencion.getDireccion());
-        Punto_atencion puntoExistente = punto_atencionRepository.darPuntos_atencion(id);
-       
-            
-        if(puntoExistente.getTipo_punto().equals("Cajero")){
-            punto_atencionRepository.actualizarCajero(id, puntoExistente.getDireccion());
-        } else if(puntoExistente.getTipo_punto().equals("Presencial")){
-            punto_atencionRepository.actualizarPresencial(id, puntoExistente.getDireccion());
-        } else if(puntoExistente.getTipo_punto().equals("Virtual")){
-            punto_atencionRepository.actualizarVirtual(id, puntoExistente.getDireccion());
-        }
-        
-        
         return "redirect:/puntos_atencion";
     }
 

@@ -25,6 +25,11 @@ public interface VirtualRepository extends JpaRepository<Virtual, Integer>{
 
     @Modifying
     @Transactional
+    @Query(value = "INSERT INTO puntos_atencion (id, tipo_punto, direccion) VALUES ( puntos_atencion_seq.currval , 'Virtual', '')", nativeQuery = true)
+    void insertarPunto_atencion();
+
+    @Modifying
+    @Transactional
     @Query(value = "UPDATE virtuales SET plataforma = :plataforma WHERE id = :id", nativeQuery = true)
     void actualizarVirtual(@Param("id") Integer id, @Param("plataforma") String plataforma);
 
@@ -32,5 +37,10 @@ public interface VirtualRepository extends JpaRepository<Virtual, Integer>{
     @Transactional
     @Query(value = "DELETE FROM virtuales WHERE id = :id", nativeQuery = true)
     void eliminarVirtual(@Param("id") Integer id);
+
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query(value = "DELETE FROM puntos_atencion WHERE id = :id", nativeQuery = true)
+    void eliminarPunto_atencion(@Param("id") Integer id);
     
 } 

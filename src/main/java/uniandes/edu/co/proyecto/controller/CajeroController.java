@@ -33,7 +33,7 @@ public class CajeroController {
     @PostMapping("/cajeros/new/save")
     public String cajeroGuardar(@ModelAttribute Cajero cajero) {
         cajeroRepository.insertarCajero(  cajero.getMonto_disponible(), cajero.getLimite_retiro(), cajero.getNumerooficina());
-        
+        cajeroRepository.insertarPunto_atencion();        
         return "redirect:/cajeros";
     }
 
@@ -57,6 +57,7 @@ public class CajeroController {
     @GetMapping("/cajeros/{id}/delete")
     public String cajeroEliminar(@PathVariable("id") Integer id){
         cajeroRepository.eliminarCajero(id);
+        cajeroRepository.eliminarPunto_atencion(id);
         return "redirect:/cajeros";
     }
     

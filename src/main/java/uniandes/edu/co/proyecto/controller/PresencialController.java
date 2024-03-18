@@ -1,5 +1,10 @@
 package uniandes.edu.co.proyecto.controller;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,8 +37,16 @@ public class PresencialController {
 
     @PostMapping("/presenciales/new/save")
     public String presencialGuardar(@ModelAttribute Presencial presencial) {
-        presencialRepository.insertarPresencial( presencial.getCajeros_disponibles(), presencial.getHorario_atencion_inicio(), presencial.getHorario_atencion_fin(), presencial.getNumerooficina());
-        
+
+        LocalTime Horario_atencion_inicio = presencial.getHorario_atencion_inicio();
+        Timestamp inicio = Timestamp.valueOf(Horario_atencion_inicio.atDate(LocalDate.now()).atZone(ZoneId.systemDefault()).toLocalDateTime());
+
+        LocalTime Horario_atencion_fin = presencial.getHorario_atencion_fin();
+        Timestamp fin = Timestamp.valueOf(Horario_atencion_fin.atDate(LocalDate.now()).atZone(ZoneId.systemDefault()).toLocalDateTime());
+
+
+        presencialRepository.insertarPresencial( presencial.getCajeros_disponibles(), inicio, fin, presencial.getNumerooficina());
+        presencialRepository.insertarPunto_atencion();
         return "redirect:/presenciales";
     }
 
@@ -50,13 +63,21 @@ public class PresencialController {
 
     @PostMapping("/presenciales/{id}/edit/save")
     public String presencialEditarGuardar(@PathVariable("id") Integer id, @ModelAttribute Presencial presencial){
-        presencialRepository.actualizarPresencial(id, presencial.getCajeros_disponibles(), presencial.getHorario_atencion_inicio(), presencial.getHorario_atencion_fin(), presencial.getNumerooficina());
+
+        LocalTime Horario_atencion_inicio = presencial.getHorario_atencion_inicio();
+        Timestamp inicio = Timestamp.valueOf(Horario_atencion_inicio.atDate(LocalDate.now()).atZone(ZoneId.systemDefault()).toLocalDateTime());
+
+        LocalTime Horario_atencion_fin = presencial.getHorario_atencion_fin();
+        Timestamp fin = Timestamp.valueOf(Horario_atencion_fin.atDate(LocalDate.now()).atZone(ZoneId.systemDefault()).toLocalDateTime());
+
+        presencialRepository.actualizarPresencial(id, presencial.getCajeros_disponibles(), inicio, fin, presencial.getNumerooficina());
         return "redirect:/presenciales";
     }
 
     @GetMapping("/presenciales/{id}/delete")
     public String presencialEliminar(@PathVariable("id") Integer id){
         presencialRepository.eliminarPresencial(id);
+        presencialRepository.eliminarPunto_atencion(id);
         return "redirect:/presenciales";
     }
     

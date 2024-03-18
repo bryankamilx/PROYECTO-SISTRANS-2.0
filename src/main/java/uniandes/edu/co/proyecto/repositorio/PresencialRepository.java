@@ -27,6 +27,11 @@ public interface PresencialRepository extends JpaRepository<Presencial, Integer>
 
     @Modifying
     @Transactional
+    @Query(value = "INSERT INTO puntos_atencion (id, tipo_punto, direccion) VALUES ( puntos_atencion_seq.currval , 'Presencial', '')", nativeQuery = true)
+    void insertarPunto_atencion();
+
+    @Modifying
+    @Transactional
     @Query(value = "UPDATE presenciales SET cajeros_disponibles = :cajeros_disponibles , horario_atencion_inicio = :horario_atencion_inicio , horario_atencion_fin = :horario_atencion_fin, numerooficina = :numerooficina WHERE id = :id", nativeQuery = true)
     void actualizarPresencial(@Param("id") Integer id, @Param("cajeros_disponibles") Integer cajeros_disponibles, @Param("horario_atencion_inicio") Timestamp horario_atencion_inicio, @Param("horario_atencion_fin") Timestamp horario_atencion_fin, @Param("numerooficina") Integer numerooficina);
 
@@ -34,5 +39,10 @@ public interface PresencialRepository extends JpaRepository<Presencial, Integer>
     @Transactional
     @Query(value = "DELETE FROM presenciales WHERE id = :id", nativeQuery = true)
     void eliminarPresencial(@Param("id") Integer id);
+
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query(value = "DELETE FROM puntos_atencion WHERE id = :id", nativeQuery = true)
+    void eliminarPunto_atencion(@Param("id") Integer id);
     
 }
