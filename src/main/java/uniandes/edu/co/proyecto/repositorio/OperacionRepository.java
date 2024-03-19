@@ -1,6 +1,5 @@
 package uniandes.edu.co.proyecto.repositorio;
 
-
 import java.sql.Date;
 import java.util.Collection;
 
@@ -23,14 +22,14 @@ public interface OperacionRepository extends JpaRepository<Operacion,Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO operaciones (id, tipo, id_usuario, producto, valor, fecha_hora) VALUES(operaciones_seq.nextval, :tipo, :id_usuario, :producto, :valor, :fecha_hora)", nativeQuery = true)
+    @Query(value = "INSERT INTO operaciones (id, tipo, id_usuario, producto, valor, fecha_hora) VALUES(operaciones_seq.nextval, :tipo, :id_usuario, :producto, :valor, TO_DATE(:fecha_hora, 'YYYY-MM-DD'))", nativeQuery = true)
     void insertarOperacion(@Param("tipo") String tipo, 
     @Param("id_usuario") Integer id_usuario, @Param("producto") String producto, 
     @Param("valor") Integer valor, @Param("fecha_hora") Date fecha_hora);
-    
+
     @Modifying
     @Transactional
-    @Query(value = "UPDATE operaciones SET tipo= :tipo, id_usuario= :id_usuario, producto= :producto, valor= :valor, fecha_hora= :fecha_hora WHERE id= :id", nativeQuery = true)
+    @Query(value = "UPDATE operaciones SET tipo= :tipo, id_usuario= :id_usuario, producto= :producto, valor= :valor, fecha_hora= TO_DATE(:fecha_hora, 'YYYY-MM-DD') WHERE id= :id", nativeQuery = true)
     void actualizarOperacion(@Param("id") Integer id, @Param("tipo") String tipo, 
     @Param("id_usuario") Integer id_usuario, @Param("producto") String producto, 
     @Param("valor") Integer valor, @Param("fecha_hora") Date fecha_hora);
