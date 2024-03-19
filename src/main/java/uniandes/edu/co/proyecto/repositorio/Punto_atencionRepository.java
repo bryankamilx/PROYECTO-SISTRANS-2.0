@@ -18,7 +18,7 @@ public interface Punto_atencionRepository extends JpaRepository<Punto_atencion, 
         Collection<Punto_atencion> darPuntos_atencion();
 
         @Query(value = "SELECT * FROM puntos_atencion WHERE id = :id", nativeQuery = true)
-        Punto_atencion darPuntos_atencion(@Param("id") int id);
+        Punto_atencion darPunto_atencion(@Param("id") int id);
 
         //Insertar puntos atencion
 
