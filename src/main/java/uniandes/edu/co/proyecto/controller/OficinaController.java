@@ -28,6 +28,7 @@ public class OficinaController {
         return "oficinaNuevo";
     }
 
+    @SuppressWarnings("null")
     @PostMapping("/oficinas/new/save")
     public String oficinaGuardar(@ModelAttribute Oficina oficina){
         oficinaRepository.save(oficina);
@@ -36,6 +37,7 @@ public class OficinaController {
 
     @GetMapping("/oficinas/{numero_oficina}/edit")
     public String oficinaEditarForm(@PathVariable("numero_oficina") Integer numero_oficina, Model model) {
+        @SuppressWarnings("null")
         Oficina oficina = oficinaRepository.findById(numero_oficina).orElse(null);
         if(oficina != null){
             model.addAttribute("oficina", oficina);

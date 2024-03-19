@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Cliente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Eliminar Cliente</h1>
+        <p>¿Estás seguro de que deseas eliminar este cliente?</p>
+        <form action="/clientes/{id}/delete" method="post">
+            <input type="hidden" th:field="*{id}">
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="/clientes" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>
