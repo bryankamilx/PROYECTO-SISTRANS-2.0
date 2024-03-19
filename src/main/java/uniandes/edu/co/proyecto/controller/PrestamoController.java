@@ -31,7 +31,7 @@ public class PrestamoController {
 
     @PostMapping("/prestamos/new/save")
     public String prestamoGuardar(@ModelAttribute Prestamo prestamo) {
-        prestamoRepository.save(prestamo); 
+        prestamoRepository.insertarPrestamo(prestamo.getId_cliente(), prestamo.getTipo_prestamo(), prestamo.getEstado());; 
         return "redirect:/prestamos";
     }
 
@@ -55,7 +55,7 @@ public class PrestamoController {
 
     @GetMapping("/prestamos/{id}/delete")
     public String prestamoEliminar(@PathVariable("id") Integer id) {
-        prestamoRepository.deleteById(id);
+        prestamoRepository.eliminarPrestamo(id);
         return "redirect:/prestamos";
     }
 }
