@@ -50,7 +50,7 @@ public class Punto_atencionController {
 
     @GetMapping("/puntos_atencion/{id}/edit")
     public String punto_atencionEditarForm(@PathVariable("id") Integer id, Model model) {
-        Punto_atencion punto_atencion = punto_atencionRepository.darPuntos_atencion(id);
+        Punto_atencion punto_atencion = punto_atencionRepository.darPunto_atencion(id);
       if(punto_atencion != null){
             model.addAttribute("punto_atencion", punto_atencion);
             return "punto_atencionEditar";

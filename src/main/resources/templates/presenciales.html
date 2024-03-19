@@ -31,6 +31,7 @@
                     <td>
                         <a th:href="@{'presenciales/' + ${presencial.id} + '/edit'}">Editar</a>
                         <a th:href="@{'presenciales/' + ${presencial.id} + '/delete'}" onclick="return confirm('¿Estás seguro de eliminar este punto presencial?')">Borrar</a>
+                        <a th:href="@{/presenciales/{id}/operacion/nueva(id=${presencial.id})}">Agregar Operación</a>
                     </td>
                 </tr>
             </tbody>
@@ -39,6 +40,7 @@
             <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
             <a th:href="@{presenciales/new}" class="btn btn-primary">Añadir Punto Presencial</a>
         </div>
+
     </div>
 </body>
 </html>

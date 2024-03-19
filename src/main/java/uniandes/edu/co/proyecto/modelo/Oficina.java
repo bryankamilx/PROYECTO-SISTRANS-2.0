@@ -9,31 +9,31 @@ import jakarta.persistence.Table;
 public class Oficina {
 
     @Id
-    private Integer numeroOficina;
-    private String serviciosOfrecidos;
+    private Integer numero_oficina;
+    private String servicios_ofrecidos;
 
-    public Oficina(Integer numeroOficina, String serviciosOfrecidos) {
+    public Oficina(Integer numero_Oficina, String servicios_Ofrecidos) {
         super();
-        this.numeroOficina = numeroOficina;
-        this.serviciosOfrecidos = serviciosOfrecidos;
+        this.numero_oficina = numero_Oficina;
+        this.servicios_ofrecidos = servicios_Ofrecidos;
     }
 
     public Oficina() {
     }
 
-    public Integer getNumeroOficina() {
-        return numeroOficina;
+    public Integer getNumero_oficina() {
+        return numero_oficina;
     }
 
-    public void setNumeroOficina(Integer numeroOficina) {
-        this.numeroOficina = numeroOficina;
+    public void setNumero_oficina(Integer numeroOficina) {
+        this.numero_oficina = numeroOficina;
     }
 
-    public String getServiciosOfrecidos() {
-        return serviciosOfrecidos;
+    public String getServicios_ofrecidos() {
+        return servicios_ofrecidos;
     }
 
-    public void setServiciosOfrecidos(String serviciosOfrecidos) {
-        this.serviciosOfrecidos = serviciosOfrecidos;
+    public void setServicios_ofrecidos(String serviciosOfrecidos) {
+        this.servicios_ofrecidos = serviciosOfrecidos;
     }
 }

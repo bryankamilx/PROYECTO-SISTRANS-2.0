@@ -14,24 +14,24 @@ import java.util.Collection;
 @Repository
 public interface OficinaRepository extends JpaRepository<Oficina, Integer> {
 
-    @Query(value = "SELECT * FROM oficina", nativeQuery = true)
+    @Query(value = "SELECT * FROM oficinas", nativeQuery = true)
     Collection<Oficina> darOficinas();
 
-    @Query(value = "SELECT * FROM oficina WHERE numeroOficina = :numeroOficina", nativeQuery = true)
-    Oficina buscarOficinaPorNumero(@Param("numeroOficina") Integer numeroOficina);
+    @Query(value = "SELECT * FROM oficinas WHERE numero_oficina = :numero_oficina", nativeQuery = true)
+    Oficina buscarOficinaPorNumero(@Param("numero_oficina") Integer numero_oficina);
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO oficina (numeroOficina, serviciosOfrecidos) VALUES (:numeroOficina, :serviciosOfrecidos)", nativeQuery = true)
-    void insertarOficina(@Param("numeroOficina") Integer numeroOficina, @Param("serviciosOfrecidos") String serviciosOfrecidos);
+    @Query(value = "INSERT INTO oficinas (numero_oficina, servicios_ofrecidos) VALUES (:numero_oficina, :servicios_ofrecidos)", nativeQuery = true)
+    void insertarOficina(@Param("numero_oficina") Integer numero_oficina, @Param("servicios_ofrecidos") String servicios_ofrecidos);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE oficina SET serviciosOfrecidos = :serviciosOfrecidos WHERE numeroOficina = :numeroOficina", nativeQuery = true)
-    void actualizarServiciosOfrecidos(@Param("numeroOficina") Integer numeroOficina, @Param("serviciosOfrecidos") String serviciosOfrecidos);
+    @Query(value = "UPDATE oficinas SET servicios_ofrecidos = :servicios_ofrecidos WHERE numero_oficina = :numero_oficina", nativeQuery = true)
+    void actualizarServiciosOfrecidos(@Param("numero_oficina") Integer numero_oficina, @Param("servicios_ofrecidos") String servicios_ofrecidos);
 
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM oficina WHERE numeroOficina = :numeroOficina", nativeQuery = true)
-    void eliminarOficina(@Param("numeroOficina") Integer numeroOficina);
+    @Query(value = "DELETE FROM oficinas WHERE numero_oficina = :numero_oficina", nativeQuery = true)
+    void eliminarOficina(@Param("numero_oficina") Integer numero_oficina);
 }

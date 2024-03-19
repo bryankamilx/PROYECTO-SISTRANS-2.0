@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Operación</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div th:fragment="formulariOperacionPresen(titulo)" class="container border border-2 w-25">
+    <form action="/presenciales/operacion/nueva/save" method="post">
+        <input type="hidden" name="punto_id" th:value="${punto_id}" />
+        <div>
+            <label for="tipo">Tipo de Operación</label>
+            <input type="text" id="tipo" name="tipo" required>
+        </div>
+        <div>
+            <label for="id_usuario">ID Usuario</label>
+            <input type="number" id="id_usuario" name="id_usuario" required>
+        </div>
+        <div>
+            <label for="producto">Producto</label>
+            <input type="text" id="producto" name="producto" required>
+        </div>
+        <div>
+            <label for="valor">Valor</label>
+            <input type="number" id="valor" name="valor" required>
+        </div>
+        <div>
+            <label for="fecha_hora">Fecha</label>
+            <input type="date" id="fecha_hora" name="fecha_hora" required>
+        </div>
+        <button type="submit">Guardar Operación</button>
+    </form>
+</body>
+</html>
