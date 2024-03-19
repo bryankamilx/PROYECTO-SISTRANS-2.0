@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Préstamo</title>
+</head>
+<body>
+    <form action="#" th:action="@{'/prestamos/'+${prestamo.id_prestamo}+'/edit/save'}" method="post">
+        <div th:replace="~{fragments/prestamoForm :: prestamoForm(titulo='Editar Préstamo', prestamo=${prestamo})}"></div>
+    </form>
+</body>
+</html>

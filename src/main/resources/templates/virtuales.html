@@ -24,6 +24,7 @@
                     <td>
                         <a th:href="@{'virtuales/' + ${virtual.id} + '/edit'}">Editar</a>
                         <a th:href="@{'virtuales/' + ${virtual.id} + '/delete'}" onclick="return confirm('¿Estás seguro de eliminar este punto virtual?')">Borrar</a>
+                        <a th:href="@{/presenciales/{id}/operacion/nueva(id=${virtual.id})}">Agregar Operación</a>
                     </td>
                 </tr>
             </tbody>

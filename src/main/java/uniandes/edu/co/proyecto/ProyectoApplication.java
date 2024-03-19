@@ -19,44 +19,13 @@ import uniandes.edu.co.proyecto.repositorio.OperacionRepository;
 
 
 @SpringBootApplication
-public class ProyectoApplication implements CommandLineRunner{
+public class ProyectoApplication{
 
-	@Autowired
-	EmpleadoRepository empleadoRepository;
+    @Autowired
 
-	@Autowired
-	OperacionRepository operacionRepository;
+    public static void main(String[] args) {
+        SpringApplication.run(ProyectoApplication.class, args);
+    }
 
-	@Autowired
-	OperacionCuentaRepository operacionCuentaRepository;
-
-	@Autowired
-	OperacionPrestamoRepository operacionPrestamoRepository;
-
-	public static void main(String[] args) {
-		SpringApplication.run(ProyectoApplication.class, args);
-	}
-
-	@Override
-	public void run(String... arg){
-		Collection<Empleado> clientes = empleadoRepository.darEmpleados();
-		for (Empleado c:clientes){
-			System.out.println(c.getId());
-		}
-		Collection<Operacion> operaciones = operacionRepository.darOperaciones();
-		for (Operacion c:operaciones){
-			System.out.println(c.getId());
-		}
-
-		Collection<OperacionCuenta> operaciones_cuenta = operacionCuentaRepository.darOperacionesCuenta();
-		for (OperacionCuenta c:operaciones_cuenta){
-			System.out.println(c.getId());
-		}
-
-		Collection<OperacionPrestamo> operaciones_prestamos = operacionPrestamoRepository.darOperacionesPrestamos();
-		for (OperacionPrestamo c:operaciones_prestamos){
-			System.out.println(c.getId());
-		}
-	}
 
 }
