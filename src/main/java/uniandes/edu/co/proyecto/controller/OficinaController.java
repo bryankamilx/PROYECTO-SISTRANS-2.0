@@ -30,13 +30,13 @@ public class OficinaController {
 
     @PostMapping("/oficinas/new/save")
     public String oficinaGuardar(@ModelAttribute Oficina oficina) {
-        oficinaRepository.insertarOficina(oficina.getNumeroOficina(), oficina.getServiciosOfrecidos());
+        oficinaRepository.insertarOficina(oficina.getNumero_Oficina(), oficina.getServicios_Ofrecidos());
         return "redirect:/oficinas";
     }
 
     @GetMapping("/oficinas/{numeroOficina}/edit")
-    public String oficinaEditarForm(@PathVariable("numeroOficina") Integer numeroOficina, Model model) {
-        Oficina oficina = oficinaRepository.buscarOficinaPorNumero(numeroOficina);
+    public String oficinaEditarForm(@PathVariable("numeroOficina") Integer numero_Oficina, Model model) {
+        Oficina oficina = oficinaRepository.buscarOficinaPorNumero(numero_Oficina);
         if (oficina != null) {
             model.addAttribute("oficina", oficina);
             return "oficinaEditar"; 
@@ -46,14 +46,14 @@ public class OficinaController {
     }
 
     @PostMapping("/oficinas/{numeroOficina}/edit/save")
-    public String oficinaEditarGuardar(@PathVariable("numeroOficina") Integer numeroOficina, @ModelAttribute Oficina oficina) {
-        oficinaRepository.actualizarServiciosOfrecidos(numeroOficina, oficina.getServiciosOfrecidos());
+    public String oficinaEditarGuardar(@PathVariable("numero_Oficina") Integer numero_Oficina, @ModelAttribute Oficina oficina) {
+        oficinaRepository.actualizarServiciosOfrecidos(numero_Oficina, oficina.getServicios_Ofrecidos());
         return "redirect:/oficinas";
     }
 
     @GetMapping("/oficinas/{numeroOficina}/delete")
-    public String oficinaEliminar(@PathVariable("numeroOficina") Integer numeroOficina) {
-        oficinaRepository.eliminarOficina(numeroOficina);
+    public String oficinaEliminar(@PathVariable("numero_Oficina") Integer numero_Oficina) {
+        oficinaRepository.eliminarOficina(numero_Oficina);
         return "redirect:/oficinas";
     }
 }
