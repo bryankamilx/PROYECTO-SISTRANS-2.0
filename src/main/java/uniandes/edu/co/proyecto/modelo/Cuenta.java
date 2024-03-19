@@ -9,46 +9,40 @@ import jakarta.persistence.Table;
 public class Cuenta {
 
     @Id
-    private Integer numeroCuenta;
-    private String tipoCuenta;
-    private Double saldo;
+    private Integer id;
+    private String tipo_cuenta;
     private String estado;
-    private Integer idCliente;
+    private int saldo;
+    private int cliente_id;
+    private int oficina;
 
-    public Cuenta(Integer numeroCuenta, String tipoCuenta, Double saldo, String estado, Integer idCliente) {
-        super();
-        this.numeroCuenta = numeroCuenta;
-        this.tipoCuenta = tipoCuenta;
-        this.saldo = saldo;
+    public Cuenta(Integer id, String tipo_cuenta, String estado, int saldo, int cliente_id, int oficina) {
+        this.id = id;
+        this.tipo_cuenta = tipo_cuenta;
         this.estado = estado;
-        this.idCliente = idCliente;
+        this.saldo = saldo;
+        this.cliente_id = cliente_id;
+        this.oficina = oficina;
     }
 
     public Cuenta() {
+        // Constructor vacío requerido por JPA
     }
 
-    public Integer getNumeroCuenta() {
-        return numeroCuenta;
+    public Integer getId() {
+        return id;
     }
 
-    public void setNumeroCuenta(Integer numeroCuenta) {
-        this.numeroCuenta = numeroCuenta;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getTipoCuenta() {
-        return tipoCuenta;
+    public String getTipo_cuenta() {
+        return tipo_cuenta;
     }
 
-    public void setTipoCuenta(String tipoCuenta) {
-        this.tipoCuenta = tipoCuenta;
-    }
-
-    public Double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
+    public void setTipo_cuenta(String tipo_cuenta) {
+        this.tipo_cuenta = tipo_cuenta;
     }
 
     public String getEstado() {
@@ -59,11 +53,27 @@ public class Cuenta {
         this.estado = estado;
     }
 
-    public Integer getIdCliente() {
-        return idCliente;
+    public int getSaldo() {
+        return saldo;
     }
 
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
+    }
+
+    public int getCliente_id() {
+        return cliente_id;
+    }
+
+    public void setCliente_id(int cliente_id) {
+        this.cliente_id = cliente_id;
+    }
+
+    public int getOficina() {
+        return oficina;
+    }
+
+    public void setOficina(int oficina) {
+        this.oficina = oficina;
     }
 }
