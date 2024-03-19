@@ -8,16 +8,7 @@ CREATE TABLE puntos_atencion (
     CONSTRAINT tipo_punto_chk CHECK (tipo_punto IN ('Presencial', 'Cajero', 'Virtual'))
 );
 
-CREATE TABLE puntos_atencion_operaciones (
-    punto_id NUMBER,
-    operacion_id NUMBER,
-    CONSTRAINT fk_punto FOREIGN KEY (punto_id) REFERENCES puntos_atencion(id),
-    CONSTRAINT fk_operacion FOREIGN KEY (operacion_id) REFERENCES operaciones(id),
-    CONSTRAINT pk_puntos_operaciones PRIMARY KEY (punto_id, operacion_id)
-);
 
-INSERT INTO puntos_atencion_operaciones (punto_id, operacion_id) VALUES (5, 101);
-INSERT INTO puntos_atencion_operaciones (punto_id, operacion_id) VALUES (305, 151);
 
 DROP SEQUENCE puntos_atencion_seq;
 
@@ -62,7 +53,7 @@ FROM puntos_atencion;
 INSERT INTO puntos_atencion (tipo_punto, direccion) VALUES ('Presencial', '123 Avenida Central');
 INSERT INTO puntos_atencion (tipo_punto, direccion) VALUES ('Presencial', '456 Calle del Mercado');
 INSERT INTO puntos_atencion (tipo_punto, direccion) VALUES ('Presencial', '789 Bulevar del Parque');
-INSERT INTO puntos_atencion (tipo_punto, direccion) VALUES ('Cajero', 'Estación de Metro Ciudad Vieja');
+INSERT INTO puntos_atencion (tipo_punto, direccion) VALUES ('Cajero', 'Estaciï¿½n de Metro Ciudad Vieja');
 INSERT INTO puntos_atencion (tipo_punto, direccion) VALUES ('Cajero', 'Centro Comercial Los Olivos');
 INSERT INTO puntos_atencion (tipo_punto, direccion) VALUES ('Cajero', 'Aeropuerto Internacional');
 INSERT INTO puntos_atencion (tipo_punto, direccion) VALUES ('Virtual', 'plataforma.bancoonline.com');
@@ -157,3 +148,14 @@ INSERT INTO virtuales (ID, PLATAFORMA) VALUES (405, 'Chatbot');
 commit;
 
 
+--Agrego relaciones entre puntos_atencion y operaciones
+CREATE TABLE puntos_atencion_operaciones (
+    punto_id NUMBER,
+    operacion_id NUMBER,
+    CONSTRAINT fk_punto FOREIGN KEY (punto_id) REFERENCES puntos_atencion(id),
+    CONSTRAINT fk_operacion FOREIGN KEY (operacion_id) REFERENCES operaciones(id),
+    CONSTRAINT pk_puntos_operaciones PRIMARY KEY (punto_id, operacion_id)
+);
+
+INSERT INTO puntos_atencion_operaciones (punto_id, operacion_id) VALUES (5, 101);
+INSERT INTO puntos_atencion_operaciones (punto_id, operacion_id) VALUES (305, 151);
