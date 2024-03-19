@@ -23,16 +23,15 @@ public interface OficinaRepository extends JpaRepository<Oficina, Integer> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO oficinas (numero_oficina, servicios_ofrecidos) VALUES (:numero_oficina, :servicios_ofrecidos)", nativeQuery = true)
-    void insertarOficina(@Param("numero_oficina") Integer numero_oficina, @Param("servicios_ofrecidos") String servicios_Ofrecidos);
+    void insertarOficina(@Param("numero_oficina") Integer numero_oficina, @Param("servicios_ofrecidos") String servicios_ofrecidos);
 
     @Modifying
     @Transactional
     @Query(value = "UPDATE oficinas SET servicios_ofrecidos = :servicios_ofrecidos WHERE numero_oficina = :numero_oficina", nativeQuery = true)
-    void actualizarServiciosOfrecidos(@Param("numero_oficina") Integer numero_oficina, @Param("servicios_ofrecidos") String servicios_Ofrecidos);
+    void actualizarServiciosOfrecidos(@Param("numero_oficina") Integer numero_oficina, @Param("servicios_ofrecidos") String servicios_ofrecidos);
 
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM oficinas WHERE numero_oficina = :numero_oficina", nativeQuery = true)
     void eliminarOficina(@Param("numero_oficina") Integer numero_oficina);
 }
-

@@ -19,14 +19,14 @@
             </thead>
             <th:block th:each="oficina : ${oficinas}">
                 <tr>
-                    <td th:text="${oficina.numero_Oficina}"></td>
-                    <td th:text="${oficina.servicios_Ofrecidos}"></td>
+                    <td th:text="${oficina.numero_oficina}"></td>
+                    <td th:text="${oficina.servicios_ofrecidos}"></td>
                     <td>
-                        <a th:href="@{/oficinas/edit/{id}(id=${oficina.numero_Oficina})}">
+                        <a th:href="@{/oficinas/{id}/edit(id=${oficina.numero_oficina})}">
                             Editar
                         </a>
-                        <a th:href="@{/oficinas/delete/{id}(id=${oficina.numero_Oficina})}"
-                           onclick="return confirm('¿Estás seguro de eliminar esta oficina?')">
+                        <a th:href="@{/oficinas/{id}/delete(id=${oficina.numero_oficina})}"
+                        onclick="return confirm('¿Estás seguro de eliminar esta oficina?')">
                             Borrar
                         </a>
                     </td>
