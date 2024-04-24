@@ -52,8 +52,7 @@ public class OperacionController {
 
     @PostMapping("/operaciones/{id}/edit/save")
     public String operacionEditarGuardar(@PathVariable("id") Integer id, @ModelAttribute Operacion operacion) {
-        operacionRepository.actualizarOperacion(id,operacion.getTipo(), operacion.getId_usuario(),
-         operacion.getProducto(), operacion.getValor(), operacion.getFecha_hora());
+        operacionRepository.actualizarOperacion(id, operacion.getId_usuario(),operacion.getProducto(), operacion.getValor());
         return "redirect:/operaciones";
     }
 

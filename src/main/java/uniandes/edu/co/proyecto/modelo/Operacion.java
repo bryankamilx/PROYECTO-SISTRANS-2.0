@@ -19,12 +19,12 @@ public class Operacion {
     private Integer id_usuario;
     private String producto;
     private Integer valor;
-    private Date fecha_hora;
+    private String fecha_hora;
 
     public Operacion()
     {;}
 
-    public Operacion(String tipo, Integer id_usuario, String producto, Integer valor, Date fecha_hora) {
+    public Operacion(String tipo, Integer id_usuario, String producto, Integer valor, String fecha_hora) {
         this.tipo = tipo;
         this.id_usuario = id_usuario;
         this.producto = producto;
@@ -72,11 +72,11 @@ public class Operacion {
         this.valor = valor;
     }
 
-    public Date getFecha_hora() {
+    public String getFecha_hora() {
         return fecha_hora;
     }
 
-    public void setFecha_hora(Date fecha_hora) {
+    public void setFecha_hora(String fecha_hora) {
         this.fecha_hora = fecha_hora;
     }
 

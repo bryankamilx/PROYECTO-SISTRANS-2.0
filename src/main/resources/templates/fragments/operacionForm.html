@@ -22,17 +22,17 @@
             <input class="form-control" type="text" id="valor"
             name="valor" required th:value="${operacion.valor}"/>
 
-            <label class="col-form-label">Fecha</label>
-            <input class="form-control" type="text" id="fecha_hora"
+            <label class="col-form-label">Fecha y Hora</label>
+            <input class="form-control" type="datetime-local" id="fecha_hora"
             name="fecha_hora" required th:value="${operacion.fecha_hora}"/>
 
             <label class="col-form-label">Tipo</label>
             <select class="form-control" id="tipo"
             name="tipo" required>
-            <option value="cuenta" th:selected="${operacion.tipo eq 'cuenta'}">
+            <option value="Cuenta" th:selected="${operacion.tipo eq 'cuenta'}">
                 Cuenta
             </option>
-            <option value="prestamo" th:selected="${operacion.tipo eq 'prestamo'}">
+            <option value="Prestamo" th:selected="${operacion.tipo eq 'prestamo'}">
                 Prestamo
             </option>
         </select>

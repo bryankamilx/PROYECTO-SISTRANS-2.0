@@ -20,7 +20,7 @@ public class OperacionCuentaController {
     @GetMapping("/operaciones_cuenta")
     public String operacionesCuenta(Model model) {
         model.addAttribute("operaciones_cuenta", operacionCuentaRepository.darOperacionesCuenta());
-        return "operaciones_cuenta";
+        return "operacionesCuenta";
     }
 
     @GetMapping("/operaciones_cuenta/new")
@@ -32,7 +32,7 @@ public class OperacionCuentaController {
     @PostMapping("/operaciones_cuenta/new/save")
     public String operacionCuentaGuardar(@ModelAttribute OperacionCuenta operacion) {
         operacionCuentaRepository.insertarOperacionCuenta(operacion.getId(), operacion.getNum_cuenta(), operacion.getDetalle());
-        return "redirect:/operaciones_cuenta";
+        return "redirect:/operacionesCuenta";
     }
     
     @GetMapping("/operaciones_cuenta/{id}/edit")
@@ -42,19 +42,19 @@ public class OperacionCuentaController {
             model.addAttribute("operacion_cuenta", operacion);
             return "operacion_cuenta_editar";
         } else {
-            return "redirect:/operaciones_cuenta";
+            return "redirect:/operacionesCuenta";
         }
     }
 
     @PostMapping("/operaciones_cuenta/{id}/edit/save")
     public String operacionCuentaEditarGuardar(@PathVariable("id") Integer id, @ModelAttribute OperacionCuenta operacion) {
         operacionCuentaRepository.actualizarOperacionCuenta(id, operacion.getNum_cuenta(), operacion.getDetalle());;
-        return "redirect:/operaciones_cuenta";
+        return "redirect:/operacionesCuenta";
     }
 
     @GetMapping("/operaciones_cuenta/{id}/delete")
     public String operacionCuentaEliminar(@PathVariable("id") Integer id) {
         operacionCuentaRepository.eliminarOperacionCuenta(id);
-        return "redirect:/operaciones_cuenta";
+        return "redirect:/operacionesCuenta";
     }
 }

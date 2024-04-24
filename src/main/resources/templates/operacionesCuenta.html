@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones de Cuenta</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div>
+        <h1>Lista de Operaciones de Cuenta</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Numero de cuenta</th>
+                    <th>Detalle</th>
+                </tr>
+            </thead>
+            <th:block th:each="operacion:${operaciones_cuenta}">
+                <tr>
+                    <td th:text="${operacion.id}"></td>
+                    <td th:text="${operacion.num_cuenta}"></td>
+                    <td th:text="${operacion.detalle}"></td>
+                    <td>
+                        <a th:href="@{operaciones_cuenta/{id}/edit(id=${operacion.id})}">
+                            Editar
+                        </a>
+                        <a th:href="@{operaciones_cuenta/{id}/delete(id=${operacion.id})}"
+                        onclick="return confirm('¿Estás seguro de eliminar esta operacion')">
+                            Borrar
+                        </a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
+            <a th:href="@{operaciones_cuenta/new}" class="btn btn-primary">Añadir Operacion</a>
+        </div>
+    </div>
+</body>
+</html>
