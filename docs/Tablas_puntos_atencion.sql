@@ -43,13 +43,6 @@ CREATE INDEX idx_tipo_punto ON puntos_atencion(tipo_punto);
 
 
 
-SELECT *
-FROM puntos_atencion;
-
-
-
-
-
 INSERT INTO puntos_atencion (tipo_punto, direccion) VALUES ('Presencial', '123 Avenida Central');
 INSERT INTO puntos_atencion (tipo_punto, direccion) VALUES ('Presencial', '456 Calle del Mercado');
 INSERT INTO puntos_atencion (tipo_punto, direccion) VALUES ('Presencial', '789 Bulevar del Parque');
