@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 
 import uniandes.edu.co.proyecto.modelo.Presencial;
 import uniandes.edu.co.proyecto.repositorio.PresencialRepository;
+import uniandes.edu.co.proyecto.modelo.Operacion;
+import uniandes.edu.co.proyecto.repositorio.OperacionRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +24,9 @@ public class PresencialController {
 
     @Autowired
     private PresencialRepository presencialRepository;
+
+    @Autowired
+    private OperacionRepository operacionRepository;
 
     @GetMapping("/presenciales")
     public String presenciales(Model model) {

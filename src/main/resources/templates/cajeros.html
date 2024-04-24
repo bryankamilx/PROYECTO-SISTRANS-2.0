@@ -29,7 +29,7 @@
                     <td>
                         <a th:href="@{'cajeros/' + ${cajero.id} + '/edit'}">Editar</a>
                         <a th:href="@{'cajeros/' + ${cajero.id} + '/delete'}" onclick="return confirm('¿Estás seguro de eliminar este cajero?')">Borrar</a>
-                        <a th:href="@{/presenciales/{id}/operacion/nueva(id=${cajero.id})}">Agregar Operación</a>
+                        <a th:href="@{operaciones/new}" class="btn btn-primary">Añadir Operacion</a>
                     </td>
                 </tr>
             </tbody>
