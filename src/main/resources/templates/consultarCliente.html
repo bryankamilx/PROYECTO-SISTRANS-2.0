@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Cliente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div>
+        <h1>Consultar Cliente</h1>
+        <form action="/parranderos/clientes/consultar/{id}" method="get" id="consultarForm">
+            <div class="form-group">
+                <label for="clienteId">ID del Cliente:</label>
+                <input type="text" class="form-control" id="clienteId" name="id" placeholder="Ingrese el ID del cliente">
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+        <a href="/parranderos/clientes" class="btn btn-secondary">Volver Atrás</a>
+    </div>
+
+    <script>
+        // Captura el evento de envío del formulario
+        document.getElementById("consultarForm").addEventListener("submit", function(event) {
+            // Obtén el valor del ID del cliente ingresado por el usuario
+            var idCliente = document.getElementById("clienteId").value;
+            // Modifica la acción del formulario antes de enviarlo
+            this.action = "/parranderos/clientes/consultar/" + idCliente;
+        });
+    </script>
+</body>
+</html>

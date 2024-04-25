@@ -13,11 +13,12 @@ import uniandes.edu.co.proyecto.modelo.Cliente;
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
     public interface RespuestaInformacionCliente {
-        Integer getCliente_id();
         String getTipo_cliente();
         String getNombre_usuario();
         Long getNumero_cuentas();
+        String getOficinas();
         Long getNumero_prestamos();
+        String getSaldos_cuentas();
     }
 
     @Query(value = "SELECT * FROM clientes", nativeQuery = true)
@@ -41,13 +42,26 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     @Query(value = "DELETE FROM clientes WHERE id = :id", nativeQuery = true)
     void eliminarCliente(@Param("id") Integer id);
 
-    @Query(value = "SELECT c.id AS cliente_id, c.tipo_cliente, u.nombre AS nombre_usuario, " +
-            "COUNT(cuentas.id) AS numero_cuentas, COUNT(prestamos.id_prestamo) AS numero_prestamos " +
-            "FROM clientes c " +
-            "LEFT JOIN usuarios u ON c.id = u.id " +
-            "LEFT JOIN cuentas cuentas ON c.id = cuentas.cliente_id " +
-            "LEFT JOIN prestamos prestamos ON c.id = prestamos.id_cliente " +
-            "WHERE c.id = :id_cliente " +
-            "GROUP BY c.id, c.tipo_cliente, u.nombre", nativeQuery = true)
+    @Query(value = "SELECT " +
+    "C.tipo_cliente AS tipo_cliente, " +
+    "U.NOMBRE AS nombre_usuario, " +
+    "COUNT(CU.ID) AS numero_cuentas, " +
+    "LISTAGG(O.NUMERO_OFICINA, ', ') WITHIN GROUP (ORDER BY O.NUMERO_OFICINA) AS oficinas, " +
+    "COUNT(P.ID_PRESTAMO) AS numero_prestamos, " +
+    "LISTAGG(CU.SALDO, ', ') WITHIN GROUP (ORDER BY CU.ID) AS saldos_cuentas " +
+    "FROM " +
+    "CLIENTES C " +
+    "LEFT JOIN " +
+    "USUARIOS U ON C.ID = U.ID " +
+    "LEFT JOIN " +
+    "CUENTAS CU ON C.ID = CU.CLIENTE_ID " +
+    "LEFT JOIN " +
+    "OFICINAS O ON CU.OFICINA = O.NUMERO_OFICINA " +
+    "LEFT JOIN " +
+    "PRESTAMOS P ON C.ID = P.ID_CLIENTE " +
+    "WHERE " +
+    "C.ID = :id_cliente " +
+    "GROUP BY " +
+    "C.TIPO_CLIENTE, U.NOMBRE", nativeQuery = true)
     Collection<RespuestaInformacionCliente> obtenerInformacionCliente(@Param("id_cliente") Integer idCliente);
 }

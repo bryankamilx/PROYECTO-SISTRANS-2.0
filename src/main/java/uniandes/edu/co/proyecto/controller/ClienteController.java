@@ -9,16 +9,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import uniandes.edu.co.proyecto.modelo.Cliente;
 import uniandes.edu.co.proyecto.repositorio.ClienteRepository;
+import uniandes.edu.co.proyecto.repositorio.ClienteRepository.RespuestaInformacionCliente;
+import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
+
 
 @Controller
 public class ClienteController {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private CuentaRepository cuentaRepository;
 
     @GetMapping("/clientes")
     public String clientes(Model model) {
@@ -62,22 +67,19 @@ public class ClienteController {
         return "redirect:/clientes";
     }
 
-    @GetMapping("/clientes/{id}/info")
-    public String mostrarInformacionCliente(@PathVariable("id") Integer id, Model model) {
-        // Obtener la información del cliente utilizando el método del repositorio
-        Collection<ClienteRepository.RespuestaInformacionCliente> informacionCliente = clienteRepository.obtenerInformacionCliente(id);
-        
-        // Agregar la información del cliente al modelo para pasarla a la vista
-        model.addAttribute("informacionCliente", informacionCliente);
-        
-        // Retornar el nombre de la vista donde se mostrará la información del cliente
-        return "informacionCliente";
+    @GetMapping("/clientes/consultar")
+    public String consultarClienteForm(Model model) {
+        return "consultarCliente";
     }
 
-    @GetMapping("/clientes/buscar")
-    public String buscarCliente(@RequestParam("clienteId") Integer clienteId, Model model) {
-        return "redirect:/clientes/" + clienteId + "/info";
-}
+    @GetMapping("/clientes/consultar/{id}")
+    public String consultarCliente(@PathVariable("id") Integer id, Model model) {
+    Collection<RespuestaInformacionCliente> informacionCliente = clienteRepository.obtenerInformacionCliente(id);
+    model.addAttribute("informacionCliente", informacionCliente);
+    return "informacionCliente";
+    }
+
+    
 
 
 }

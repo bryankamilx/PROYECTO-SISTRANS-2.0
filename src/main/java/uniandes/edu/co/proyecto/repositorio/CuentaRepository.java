@@ -34,7 +34,5 @@ public interface CuentaRepository extends JpaRepository<Cuenta, Integer> {
     @Query(value = "DELETE FROM cuentas WHERE id = :id", nativeQuery = true)
     void eliminarCuenta(@Param("id") Integer id);
 
-    
-
-
+   
 }
