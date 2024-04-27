@@ -7,13 +7,39 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div>
+    <div class="col">
+        <form action="/parranderos/cuentas/filtradas/tipo" method="get">
+
+            <select name="tipo">
+                <option value="ahorros">Ahorros</option>
+                <option value="corriente">Corriente</option>
+                <option value="AFC">AFC</option>
+            </select>
+            <button type="submit">Filtrar por tipo</button>
+        </form>
+    </div>
+    <div class="col">
+        <form action="/parranderos/cuentas/filtradas/estado" method="get">
+            <select name="estado">
+                <option value="activa">Activa</option>
+                <option value="cerrada">Cerrada</option>
+                <option value="desactivada">Desactivada</option>
+            </select>
+            <button type="submit">Filtrar por estado</button>
+        </form>
+    </div>
+    <div class="col">
+        <form action="/parranderos/cuentas/filtradas/saldo" method="get">
+            <input type="number" name="saldo" placeholder="Saldo mínimo">
+            <button type="submit">Filtrar por saldo</button>
+        </form>
+    </div>
         <h1>Lista de Cuentas</h1>
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Tipo de Cuenta</th>
+                    <th>Tipo</th>
                     <th>Estado</th>
                     <th>Saldo</th>
                     <th>ID Cliente</th>
@@ -24,7 +50,7 @@
             <th:block th:each="cuenta : ${cuentas}">
                 <tr>
                     <td th:text="${cuenta.id}"></td>
-                    <td th:text="${cuenta.tipo_cuenta}"></td>
+                    <td th:text="${cuenta.tipo}"></td>
                     <td th:text="${cuenta.estado}"></td>
                     <td th:text="${cuenta.saldo}"></td>
                     <td th:text="${cuenta.cliente_id}"></td>

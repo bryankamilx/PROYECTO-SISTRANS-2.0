@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuentas Filtradas por Estado</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cuentas Filtradas por Estado</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                    <th>Saldo</th>
+                    <th>ID Cliente</th>
+                    <th>Oficina</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="cuenta : ${cuentas}">
+                    <tr>
+                        <td th:text="${cuenta.id}"></td>
+                        <td th:text="${cuenta.tipo}"></td>
+                        <td th:text="${cuenta.estado}"></td>
+                        <td th:text="${cuenta.saldo}"></td>
+                        <td th:text="${cuenta.cliente_id}"></td>
+                        <td th:text="${cuenta.oficina}"></td>
+                        <td>
+                            <a th:href="@{/cuentas/{id}/edit(id=${cuenta.id})}" class="btn btn-primary">Editar</a>
+                            <a th:href="@{/cuentas/{id}/delete(id=${cuenta.id})}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar esta cuenta?')">Eliminar</a>
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+        <div>
+            <a href="/cuentas/new" class="btn btn-success">Agregar Cuenta</a>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
+        </div>
+    </div>
+</body>
+</html>

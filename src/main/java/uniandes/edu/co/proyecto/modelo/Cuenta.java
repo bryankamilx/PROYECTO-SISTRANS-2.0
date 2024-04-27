@@ -10,15 +10,15 @@ public class Cuenta {
 
     @Id
     private Integer id;
-    private String tipo_cuenta;
+    private String tipo;
     private String estado;
     private int saldo;
     private int cliente_id;
     private int oficina;
 
-    public Cuenta(Integer id, String tipo_cuenta, String estado, int saldo, int cliente_id, int oficina) {
+    public Cuenta(Integer id, String tipo, String estado, int saldo, int cliente_id, int oficina) {
         this.id = id;
-        this.tipo_cuenta = tipo_cuenta;
+        this.tipo = tipo;
         this.estado = estado;
         this.saldo = saldo;
         this.cliente_id = cliente_id;
@@ -37,12 +37,12 @@ public class Cuenta {
         this.id = id;
     }
 
-    public String getTipo_cuenta() {
-        return tipo_cuenta;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipo_cuenta(String tipo_cuenta) {
-        this.tipo_cuenta = tipo_cuenta;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getEstado() {

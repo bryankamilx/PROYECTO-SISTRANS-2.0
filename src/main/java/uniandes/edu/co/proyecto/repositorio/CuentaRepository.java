@@ -21,18 +21,26 @@ public interface CuentaRepository extends JpaRepository<Cuenta, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO cuentas (id, tipo_cuenta, estado, saldo, cliente_id, oficina) VALUES (cuentas_seq.nextval, :tipo_cuenta, :estado, :saldo, :cliente_id, :oficina)", nativeQuery = true)
-    void insertarCuenta(@Param("tipo_cuenta") String tipoCuenta, @Param("estado") String estado, @Param("saldo") int saldo, @Param("cliente_id") int clienteId, @Param("oficina") int oficina);
+    @Query(value = "INSERT INTO cuentas (id, tipo, estado, saldo, cliente_id, oficina) VALUES (cuentas_seq.nextval, :tipo, :estado, :saldo, :cliente_id, :oficina)", nativeQuery = true)
+    void insertarCuenta(@Param("tipo") String tipo, @Param("estado") String estado, @Param("saldo") int saldo, @Param("cliente_id") int clienteId, @Param("oficina") int oficina);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE cuentas SET tipo_cuenta = :tipo_cuenta, estado = :estado, saldo = :saldo, cliente_id = :cliente_id, oficina = :oficina WHERE id = :id", nativeQuery = true)
-    void actualizarCuenta(@Param("id") Integer id, @Param("tipo_cuenta") String tipoCuenta, @Param("estado") String estado, @Param("saldo") int saldo, @Param("cliente_id") int clienteId, @Param("oficina") int oficina);
+    @Query(value = "UPDATE cuentas SET tipo = :tipo, estado = :estado, saldo = :saldo, cliente_id = :cliente_id, oficina = :oficina WHERE id = :id", nativeQuery = true)
+    void actualizarCuenta(@Param("id") Integer id, @Param("tipo") String tipo, @Param("estado") String estado, @Param("saldo") int saldo, @Param("cliente_id") int clienteId, @Param("oficina") int oficina);
 
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM cuentas WHERE id = :id", nativeQuery = true)
     void eliminarCuenta(@Param("id") Integer id);
 
+    //Método para buscar cuentas por tipo de cuenta
+    Collection<Cuenta> findByTipo(String tipo);
+
+    // Método para buscar cuentas por estado
+    Collection<Cuenta> findByEstado(String estado);
+
+    // Método para buscar cuentas por saldo mayor o igual a un valor dado
+    Collection<Cuenta> findBySaldoGreaterThanEqual(int saldo);
    
 }
