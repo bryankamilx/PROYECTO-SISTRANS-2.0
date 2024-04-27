@@ -7,6 +7,15 @@
 </head>
 <body>
     <div>
+        <h1>Generar Extracto de Cuenta</h1>
+        <form action="operaciones_cuenta/extracto" method="get">
+            <label for="cuenta">Número de Cuenta:</label>
+            <input type="text" id="cuenta" name="cuenta" required>
+            <button type="submit" class="btn btn-primary">Generar Extracto</button>
+        </form>
+    </div>
+    <div>
+    <div>
         <h1>Lista de Operaciones de Cuenta</h1>
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
@@ -19,7 +28,7 @@
             <th:block th:each="operacion:${operaciones_cuenta}">
                 <tr>
                     <td th:text="${operacion.id}"></td>
-                    <td th:text="${operacion.num_cuenta}"></td>
+                    <td th:text="${operacion.cuenta}"></td>
                     <td th:text="${operacion.detalle}"></td>
                     <td>
                         <a th:href="@{operaciones_cuenta/{id}/edit(id=${operacion.id})}">

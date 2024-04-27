@@ -5,24 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parranderos</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+    <style>
+        body {
+            background-color: yellow; /* Fondo amarillo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+        }
+
+        .container {
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .button-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .button-list li {
+            margin-bottom: 10px;
+        }
+
+        .button {
+            background-color: black; /* Fondo negro */
+            color: white; /* Letra blanca */
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-transform: uppercase; /* Convertir a mayúsculas */
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra */
+        }
+
+        .button-list li:first-child {
+            margin-top: 20px;
+        }
+
+        .logo {
+            width: 100%; /* Ancho al 100% */
+            height: auto;
+            margin-bottom: 1px;
+            border: 2px solid black; /* Marco */
+        }
+    </style>
 </head>
 <body>
-    <div class="container mx-auto w-25">
-        <img th:src="@{/images/logo.png}" width="250"/>
-        <div>
-            <a th:href="@{/usuarios}" class="btn btn-primary">Usuarios</a>
-            <a th:href="@{/prestamos}" class="btn btn-primary">Prestamos</a>
-            <a th:href="@{/cuentas}" class="btn btn-primary">Cuentas</a>
-            <a th:href="@{/clientes}" class="btn btn-primary">Clientes</a>
-            <a th:href="@{/operaciones}" class="btn btn-primary">Operaciones</a>
-            <a th:href="@{/operaciones_prestamo}" class="btn btn-primary">Operaciones de Prestamo</a>
-            <a th:href="@{/operaciones_cuenta}" class="btn btn-primary">Operaciones de Cuenta</a>
-            <a th:href="@{/puntos_atencion}" class="btn btn-primary">Puntos_atencion</a>
-            <a th:href="@{/presenciales}" class="btn btn-primary">Presenciales</a>
-            <a th:href="@{/cajeros}" class="btn btn-primary">Cajeros</a>
-            <a th:href="@{/virtuales}" class="btn btn-primary">Virtuales</a>
-            <a th:href="@{/oficinas}" class="btn btn-primary">Oficinas</a>
-        </div>
+    <div class="container">
+        <img th:src="@{/images/logo.png}" class="logo" />
+        <ul class="button-list">
+            <li><a th:href="@{/usuarios}" class="button" th:text="${#strings.toUpperCase(#strings.replace('Usuarios', '_', ' '))}">Usuarios</a></li>
+            <li><a th:href="@{/prestamos}" class="button" th:text="${#strings.toUpperCase(#strings.replace('Prestamos', '_', ' '))}">Prestamos</a></li>
+            <li><a th:href="@{/cuentas}" class="button" th:text="${#strings.toUpperCase(#strings.replace('Cuentas', '_', ' '))}">Cuentas</a></li>
+            <li><a th:href="@{/clientes}" class="button" th:text="${#strings.toUpperCase(#strings.replace('Clientes', '_', ' '))}">Clientes</a></li>
+            <li><a th:href="@{/operaciones}" class="button" th:text="${#strings.toUpperCase(#strings.replace('Operaciones', '_', ' '))}">Operaciones</a></li>
+            <li><a th:href="@{/operaciones_prestamo}" class="button" th:text="${#strings.toUpperCase(#strings.replace('Operaciones de Prestamo', '_', ' '))}">Operaciones de Prestamo</a></li>
+            <li><a th:href="@{/operaciones_cuenta}" class="button" th:text="${#strings.toUpperCase(#strings.replace('Operaciones de Cuenta', '_', ' '))}">Operaciones de Cuenta</a></li>
+            <li><a th:href="@{/puntos_atencion}" class="button" th:text="${#strings.toUpperCase(#strings.replace('Puntos_atencion', '_', ' '))}">Puntos Atencion</a></li>
+            <li><a th:href="@{/presenciales}" class="button" th:text="${#strings.toUpperCase(#strings.replace('Presenciales', '_', ' '))}">Presenciales</a></li>
+            <li><a th:href="@{/cajeros}" class="button" th:text="${#strings.toUpperCase(#strings.replace('Cajeros', '_', ' '))}">Cajeros</a></li>
+            <li><a th:href="@{/virtuales}" class="button" th:text="${#strings.toUpperCase(#strings.replace('Virtuales', '_', ' '))}">Virtuales</a></li>
+            <li><a th:href="@{/oficinas}" class="button" th:text="${#strings.toUpperCase(#strings.replace('Oficinas', '_', ' '))}">Oficinas</a></li>
+        </ul>
     </div>
 </body>
 </html>

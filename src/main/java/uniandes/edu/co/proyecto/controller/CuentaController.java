@@ -81,7 +81,10 @@ public class CuentaController {
         model.addAttribute("cuentas", cuentasFiltradas);
         return "cuentasFiltradasPorSaldo"; // Vista para cuentas filtradas por saldo
     }
+
+    
+}
     
 
 
-}
+

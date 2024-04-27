@@ -10,15 +10,15 @@ public class OperacionCuenta {
 
     @Id
     private Integer id;
-    private Integer num_cuenta;
+    private Integer cuenta;
     private String detalle;
 
     public OperacionCuenta()
     {;}
 
-    public OperacionCuenta(Integer id, Integer num_cuenta, String detalle) {
+    public OperacionCuenta(Integer id, Integer cuenta, String detalle) {
         this.id = id;
-        this.num_cuenta = num_cuenta;
+        this.cuenta = cuenta;
         this.detalle = detalle;
     }
 
@@ -30,12 +30,12 @@ public class OperacionCuenta {
         this.id = id;
     }
 
-    public Integer getNum_cuenta() {
-        return num_cuenta;
+    public Integer getCuenta() {
+        return cuenta;
     }
 
-    public void setNum_cuenta(Integer num_cuenta) {
-        this.num_cuenta = num_cuenta;
+    public void setCuenta(Integer cuenta) {
+        this.cuenta = cuenta;
     }
 
     public String getDetalle() {

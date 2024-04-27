@@ -13,6 +13,12 @@ import uniandes.edu.co.proyecto.modelo.Cuenta;
 @Repository
 public interface CuentaRepository extends JpaRepository<Cuenta, Integer> {
 
+    public interface ExtractoCuenta {
+        Integer getOperacionId();
+        Integer getNumeroCuenta();
+        String getDetalle();
+    }
+
     @Query(value = "SELECT * FROM cuentas", nativeQuery = true)
     Collection<Cuenta> darCuentas();
 
