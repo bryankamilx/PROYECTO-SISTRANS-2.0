@@ -27,6 +27,9 @@ public interface OperacionCuentaRepository extends JpaRepository<OperacionCuenta
     @Query(value = "SELECT * FROM operaciones_cuentas WHERE id= :id", nativeQuery = true)
     OperacionCuenta darOperacionCuenta(@Param("id") int id);
 
+    @Query(value = "SELECT * FROM operaciones_cuentas WHERE id= :id FOR UPDATE", nativeQuery = true)
+    OperacionCuenta darOperacionCuentaEspera(@Param("id") int id);
+
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO operaciones_cuentas (id, cuenta, detalle) VALUES(:id, :cuenta, :detalle)", nativeQuery = true)

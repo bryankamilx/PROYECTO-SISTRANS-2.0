@@ -31,8 +31,9 @@ public class OperacionCuentaService {
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public void actualizar_operacionCuenta_con_espera(int id_operacion, int cuenta, String detalle) {
         try {
+            OperacionCuenta operacionActual = operacionCuentasRepository.darOperacionCuentaEspera(id_operacion);
             Thread.sleep(10000);
-            operacionCuentasRepository.actualizarOperacionCuenta(id_operacion, cuenta, detalle);
+            operacionCuentasRepository.actualizarOperacionCuenta(id_operacion, operacionActual.getCuenta(),operacionActual.getDetalle());
         } catch (Exception e) {
             System.out.println(e.getMessage()); 
         }
