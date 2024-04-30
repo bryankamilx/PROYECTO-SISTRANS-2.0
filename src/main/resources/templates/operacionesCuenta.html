@@ -41,6 +41,9 @@
                         <a th:href="@{operaciones_cuenta/{id}/edit(id=${operacion.id})}">
                             Editar
                         </a>
+                        <a th:href="@{operaciones_cuenta/{id}/edit/wait(id=${operacion.id})}">
+                            Editar con espera
+                        </a>
                         <a th:href="@{operaciones_cuenta/{id}/delete(id=${operacion.id})}"
                         onclick="return confirm('¿Estás seguro de eliminar esta operacion')">
                             Borrar
@@ -52,6 +55,7 @@
         <div>
             <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
             <a th:href="@{operaciones_cuenta/new}" class="btn btn-primary">Añadir Operacion</a>
+            <a th:href='@{operaciones_cuenta/bloqueo}' class="btn btn-primary">Bloquear lectura</a>
         </div>
     </div>
 </body>
