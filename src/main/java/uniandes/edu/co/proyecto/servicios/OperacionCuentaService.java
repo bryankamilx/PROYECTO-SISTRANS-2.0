@@ -48,12 +48,11 @@ public class OperacionCuentaService {
     }
 
     @Transactional(isolation = Isolation.SERIALIZABLE, readOnly = true)
-    public Collection<OperacionCuenta> consultarOperacionesSinFantasma() throws InterruptedException {
-        Collection<OperacionCuenta> operaciones = operacionCuentasRepository.darOperacionesCuenta();
-        System.out.println(operaciones.size());
-        Thread.sleep(10000); 
-        operaciones = operacionCuentasRepository.darOperacionesCuenta();
-        return operaciones; 
+    public Collection<OperacionCuenta> consultarOperacionesConEspera(Integer cuenta) throws InterruptedException {
+    Thread.sleep(30000); // Demora de 10 segundos
+    Collection<OperacionCuenta> operaciones = operacionCuentasRepository.findByCuenta(cuenta);
+    System.out.println(operaciones.size()); 
+    return operaciones; 
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED, readOnly = true)
@@ -62,6 +61,15 @@ public class OperacionCuentaService {
         System.out.println(operaciones.size()); 
         operaciones = operacionCuentasRepository.darOperacionesCuenta();
         return operaciones;
+    }
+
+    @Transactional(isolation = Isolation.SERIALIZABLE, readOnly = true)
+    public Collection<OperacionCuenta> consultarOperacionesSinFantasma() throws InterruptedException {
+        Collection<OperacionCuenta> operaciones = operacionCuentasRepository.darOperacionesCuenta();
+        System.out.println(operaciones.size());
+        Thread.sleep(10000); 
+        operaciones = operacionCuentasRepository.darOperacionesCuenta();
+        return operaciones; 
     }
 
 }
