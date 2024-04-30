@@ -95,6 +95,19 @@ public class OperacionCuentaController {
         return "extracto"; // Vista para cuentas filtradas por tipo
     }
 
+    @GetMapping("/operaciones_cuenta/extracto_con_espera")
+    public String consultarOperacionesEspera(@RequestParam(required = false) Integer cuenta, Model model, RedirectAttributes redirectAttributes) {
+    try {
+        Collection<OperacionCuenta> extractoConEspera = operacionCuentaService.consultarOperacionesConEspera(cuenta);
+        model.addAttribute("extracto", extractoConEspera);
+    } catch (Exception e) {
+        System.err.println("Error durante la consulta de operaciones: " + e.getMessage());
+        redirectAttributes.addFlashAttribute("errorMessage", "No se pudo consultar el extracto de cuenta con espera.");
+        return "redirect:/operaciones_cuenta"; // Redireccionar a la página de operaciones de cuenta
+    }
+    return "extracto";
+    }
+
     @GetMapping("/operaciones_cuenta/bloqueo")
     public String consultarOperacionesSinFantasma(RedirectAttributes redirectAttributes) {
         try {
@@ -107,4 +120,7 @@ public class OperacionCuentaController {
         }
         return "redirect:/operaciones_cuenta";
     }
+
 }
+
+
