@@ -1,3 +1,5 @@
+El documento de informe se encuentra dentro de la carpeta docs, junto con las sentencias SQL y el ejercicio de aislamiento
+
 Instalacion Usuarios
 
 1. Primero cree la tabla de usuarios
